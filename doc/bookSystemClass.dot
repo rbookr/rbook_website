@@ -1,0 +1,50 @@
+digraph bookSystem {
+    node[shape=plaintext colorscheme="pastel15"];
+    rankdir=LR;
+    bookClass[style=filled,fillcolor="3"];
+    bookClass->{scanClass,RenderClass,dataBaseClass,respositoryClass,urlClass}
+    scanClass[label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+        <tr> <td PORT="" bgcolor="1">scanClass</td> </tr>
+        <tr><td>
+            <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+                <tr> <td PORT="">loadByCatalogue</td> </tr>
+                <tr> <td PORT="">loadByDirectory</td> </tr>
+            </TABLE>
+        </td> </tr> </TABLE> >];
+
+    dataBaseClass[label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+        <tr> <td PORT="" bgcolor="1">DataClass</td> </tr>
+        <tr><td>
+            <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+                <tr> <td PORT="">update</td> </tr>
+                <tr> <td PORT="">find</td> </tr>
+            </TABLE>
+        </td> </tr> </TABLE> >];
+
+    RenderClass[label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+        <tr> <td PORT="" bgcolor="1"><FONT>RenderClass(md2html)</FONT></td> </tr>
+        <tr><td>
+            <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+                <tr> <td PORT="">Render(md,options)</td> </tr>
+            </TABLE>
+        </td> </tr> </TABLE> > xlabel=""];
+
+    respositoryClass[label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+        <tr> <td PORT="" bgcolor="1">respositoryClass</td> </tr>
+        <tr><td>
+            <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+                <tr> <td PORT="">pull</td> </tr>
+                <tr> <td PORT="">history</td> </tr>
+            </TABLE>
+        </td> </tr> </TABLE> >];
+
+    urlClass[label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+        <tr> <td PORT="" bgcolor="1">urlClass</td> </tr>
+        <tr><td>
+            <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0">
+                <tr> <td PORT="">url2path</td> </tr>
+                <tr> <td PORT="">path2url</td> </tr>
+            </TABLE>
+        </td> </tr> </TABLE> >];
+
+}
