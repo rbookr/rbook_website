@@ -1,15 +1,140 @@
 import fs = require("fs")
 import pathFn from 'path'
 import {fileURLToPath} from 'url'
+import jsyaml  from 'js-yaml'
+import emojiToolkit = require("emoji-toolkit")
+import md5 from "md5"
+import moment from 'moment'
+
 class Scan {
     parent:bookSystem
+    rFrontMatter = /^(-{3,}|;{3,})[\n,\r]{1,2}([\s\S]+?)[\n,\r]{1,2}\1(?:$|[\n,\r]{1,2}([\s\S]*)$)/;
+    /* 分割文件 YAML信息头 和 真实内容*/
     constructor(parent:bookSystem){
         this.parent = parent
     }
+
+    split(filePath:string):article_split_info{
+        if( !pathFn.isAbsolute(filePath))
+            filePath = pathFn.join(this.parent.localRespository,filePath)
+        let str = fs.readFileSync(filePath,{encoding:'utf-8'})
+
+        if (this.rFrontMatter.test(str)) {
+            let match = str.match(this.rFrontMatter);
+            try {
+                return {
+                    head: jsyaml.safeLoad( match![2]),
+                    content: match![3] || '',
+                };
+            }
+            catch (e){
+                console.error(`yaml load head Error : ${filePath}`)
+                process.exit(0)
+            }
+        }
+        return {head:{},content: str};
+    }
+
+    gen_document(filePath:string):document{
+        //let doc:document = {_id:""}
+        let fileInfo = this.split(filePath)
+
+        let resolve_path = filePath
+        let real_path = filePath
+        if( pathFn.isAbsolute(filePath))
+            resolve_path = pathFn.relative(this.parent.localRespository, real_path)
+        else
+            real_path = pathFn.join(this.parent.localRespository,resolve_path)
+
+        let doc:document = {
+            _id: fileInfo.head._id || md5(resolve_path),
+            real_path,
+            resolve_path,
+            update_time:Date.now(),
+            head:fileInfo.head
+        }
+        return doc
+    }
+
+    /** 目录扫描 */
     scanCatalogues(){
     }
-    scanAllRespository(){
-        return this.get_all_files_in_dir(this.parent.localRespository, [/^_/], [/\.md$/])
+
+    is_yaml_file(_path:string){
+        return pathFn.extname(_path) === '.yml'
+    }
+
+    /** 读取目录 */
+    loadSummary(path:string,parent:SUMMARY){
+        let basePath = path
+        let summaryPath = path
+        //@ts-ignore
+        let Url = this.parent.Url
+        if( !this.is_yaml_file(path) ){
+            //basePath = pathFn.dirname(path)
+            summaryPath= pathFn.join(path,'SUMMARY.yml')
+        }
+        else {
+            basePath = pathFn.dirname(path)
+        }
+        if( !fs.existsSync(path)) //不存在
+            return null
+
+        parent.children = []
+
+        let summary_array = jsyaml.safeLoad(fs.readFileSync(summaryPath,{encoding:'utf-8'}));
+
+        //遍历
+        if( !summary_array ) return
+
+        for(let item of summary_array){
+            let {path:subpath,title} = item
+            let real_path
+            try {
+                real_path = pathFn.join(basePath,subpath)
+            }
+            catch(e){
+                console.error(basePath)
+                throw(e)
+            }
+
+            let stat = fs.statSync(real_path)
+
+            if(stat.isFile()) //是文件
+            {
+                parent.children.push({
+                    name:emojiToolkit.shortnameToImage( title || 'unkown' ),
+                    url: Url.path_2_url(pathFn.relative(this.parent.localRespository, real_path))
+                })
+            }
+            else if( stat.isDirectory()){ //是目录
+                var new_data:SUMMARY = {
+                    name: emojiToolkit.shortnameToImage( title || 'unkown')
+                }
+
+                this.loadSummary(real_path,new_data)
+
+                if( new_data.children &&  new_data.children.length !== 0 )
+                    parent.children.push(new_data)
+            }
+        }
+    }
+
+    /** 
+     * @description 扫描所有内容并存入nedb
+     * */
+    async scanAllRespository(){
+        let files = this.get_all_files_in_dir(this.parent.localRespository, [/^_/], [/\.md$/])
+        files.map( async ({path,rpath,full_path})=>{
+            /** 存储 进 数据库 */
+            let doc = this.gen_document(full_path)
+
+            console.log(doc)
+
+            //@ts-ignore
+            await this.parent.Db.update(doc)
+
+        })
     }
 
     /** 

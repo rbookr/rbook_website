@@ -1,4 +1,6 @@
+import Url from "./subClass/urlClass"
 import Scan from "./subClass/scanClass"
+import Db from './subClass/DataClass'
 class BookSystem implements bookSystem{
     remoteRespository:string//远程仓库
     localRespository:string //本地仓库
@@ -7,6 +9,8 @@ class BookSystem implements bookSystem{
     scanAllRespository:Boolean //
 
     Scan:Scan
+    Url:Url
+    Db:Db
 
     constructor(opts:bookSystemOpts){
 
@@ -17,6 +21,8 @@ class BookSystem implements bookSystem{
         this.scanAllRespository = opts.scanAllRespository
 
         this.Scan = new Scan(this)
+        this.Url = new Url(this)
+        this.Db = new Db(this)
     }
 }
 

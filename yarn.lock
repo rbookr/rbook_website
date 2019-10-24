@@ -14,6 +14,18 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/js-yaml@^3.12.1":
+  version "3.12.1"
+  resolved "https://registry.npm.taobao.org/@types/js-yaml/download/@types/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"
+  integrity sha1-XG9KHqvKhHkvvZFvDLQIR/EjxlY=
+
+"@types/md5@^2.1.33":
+  version "2.1.33"
+  resolved "https://registry.npm.taobao.org/@types/md5/download/@types/md5-2.1.33.tgz#8c8dba30df4ad0e92296424f08c4898dd808e8df"
+  integrity sha1-jI26MN9K0OkilkJPCMSJjdgI6N8=
+  dependencies:
+    "@types/node" "*"
+
 "@types/nedb@^1.8.9":
   version "1.8.9"
   resolved "https://registry.npm.taobao.org/@types/nedb/download/@types/nedb-1.8.9.tgz#3cb80a94dfe41bea1dc33c4ea39cd4e7f754abc4"
@@ -712,6 +724,11 @@ ejs@^2.7.1:
   version "2.7.1"
   resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.7.1.tgz#5b5ab57f718b79d4aca9254457afecd36fa80228"
   integrity sha1-W1q1f3GLedSsqSVEV6/s02+oAig=
+
+emoji-toolkit@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.npm.taobao.org/emoji-toolkit/download/emoji-toolkit-5.0.5.tgz#83f92fc5e78031e046f9fe861c804effdc4380ee"
+  integrity sha1-g/kvxeeAMeBG+f6GHIBO/9xDgO4=
 
 encodeurl@^1.0.2:
   version "1.0.2"

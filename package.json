@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "ejs": "^2.7.1",
+    "emoji-toolkit": "^5.0.5",
     "js-yaml": "^3.13.1",
     "koa": "^2.10.0",
     "koa-bodyparser": "^4.2.1",
@@ -17,6 +18,8 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "@types/js-yaml": "^3.12.1",
+    "@types/md5": "^2.1.33",
     "@types/nedb": "^1.8.9",
     "nodemon": "^1.19.4",
     "ts-node": "^8.4.1"
