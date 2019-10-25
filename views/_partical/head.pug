@@ -1,0 +1,19 @@
+- 
+  var menu = [
+      ['xuanzhongshangcheng','/','主页'],
+      ['list1','/catalog','目录'],
+      ['list','/list','列表'],
+      ['tag','/tag','标签云'],
+      ['historyrecord','/history','历史记录'],
+      ['about','/about','关于'],
+  ]
+div.site-header.header-background( style="background-image: url(https://i.loli.net/2019/05/06/5ccfffeae9910.jpg)")
+  .site-header-title
+    h3 title
+  .site-header-menu
+    ul
+      each item in menu
+        li
+          a(href=item[1])
+            i.iconfont(class="icon-"+item[0])
+            = item[2]

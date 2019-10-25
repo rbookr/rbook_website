@@ -1,0 +1,43 @@
+.site-header {
+  height: 193px;
+  width: 100%;
+  padding: 1.5rem 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; }
+  .site-header .site-header-title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center; }
+    .site-header .site-header-title h3 {
+      font-size: 5em;
+      color: #ccc;
+      text-shadow: 5px 5px 5px #333; }
+  .site-header .site-header-menu {
+    height: 20px;
+    flex-grow: 0; }
+    .site-header .site-header-menu ul {
+      font-size: 1.2em;
+      display: flex; }
+      .site-header .site-header-menu ul li {
+        margin: 5px 10px; }
+        .site-header .site-header-menu ul li a {
+          padding: 5px;
+          border-radius: 3px;
+          color: #fff;
+          text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.4); }
+          .site-header .site-header-menu ul li a i {
+            margin: 0 5px; }
+        .site-header .site-header-menu ul li a:hover {
+          background: #fff;
+          color: rgba(0, 0, 0, 0.6);
+          font-weight: bolder; }
+
+.header-background {
+  background-color: #808080;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover; }
