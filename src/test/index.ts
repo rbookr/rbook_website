@@ -1,4 +1,4 @@
-import BookSystem from "../src/bookSystem"
+import BookSystem from "../bookSystem"
 
 var book = new BookSystem({
     remoteRespository:"",

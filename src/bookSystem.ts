@@ -24,6 +24,18 @@ class BookSystem implements bookSystem{
         this.Url = new Url(this)
         this.Db = new Db(this)
     }
+
+    /** 清空数据库 */
+    clear(){
+      return new Promise( (res,rej)=>{
+        this.Db.db.remove({},{multi:true},(err,numRemove)=>{
+          if( err)
+            rej(err)
+          else
+            res(numRemove)
+        } )
+      })
+    }
 }
 
 export default BookSystem

@@ -88,4 +88,6 @@ typings/
 .dynamodb/
 
 config.yaml
+config.yml
+render.js
 tmp/

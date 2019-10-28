@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+global.debug = require('debug')('debug');
+var http = require('http');
+var fs = require('fs')
+var jsyaml = require("js-yaml")
+
+
+/* 1.====== 加载配置 ====== */
+let config_path = process.argv[2]
+
+if( !config_path ){
+  console.error(`没有指定[配置]文件,例如: rbook config.yml`)
+  process.exit(0)
+}
+else if( ! fs.existsSync(config_path)){
+  console.error(`[配置]文件不存在,${config_path}`)
+  process.exit(0)
+}
+
+try{
+  global.config = jsyaml.safeLoad( fs.readFileSync(config_path,{encoding:'utf-8'}))
+}
+catch(e){
+  console.error(`配置文件加载错误,${config_path}`)
+  console.error(e)
+  process.exit(0)
+}
+
+/* 2.====== 加载BookSystem ====== */
+var BookSystemClass = require("../lib/bookSystem/bookSystem").default
+global.bookSystem = new BookSystemClass(global.config)
+
+/* 3.====== 初始化的相关工作 ====== */
+async function initJobs(){
+  await bookSystem.clear()      //清空数据库
+  //扫描
+  //仓库clone
+  //仓库更新
+}
+
+initJobs()
+
+/* 4.====== 创建http 服务器 ====== */
+var app = require('../app');
+var port = 3033
+var server = http.createServer(app.callback());
+server.listen(port)
+server.on('listening', onListening);
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
