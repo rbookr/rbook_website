@@ -25,5 +25,6 @@ block content
                       span
                         a(href="/tags?tag="+tag) tag
               td.td-catalog= item.head.catalog || ""
-    +pagination()
+    p= JSON.stringify(pagination)
+    +pagination(pagination)
 

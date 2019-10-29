@@ -26,6 +26,10 @@
             a:hover:not(.active) {
                 background-color: #ddd;
             }
+            a.disable {
+              pointer-events :none;
+              background: #f2f2f2;
+            }
         }
     }
 }

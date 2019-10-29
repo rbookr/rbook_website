@@ -42,7 +42,6 @@ app.use(async (ctx, next) => {
 app.use( async (ctx,next)=>{
     let ext = pathFn.extname(ctx.path)
     if( ['.png','.jpg','.gif'].indexOf(ext) !== -1){
-        debug(ctx.path)
         //let real_path = pathFn.join(C.book_path,ctx.path)
         await send(ctx,ctx.path,{ root: config.localRespository })
         return
@@ -59,13 +58,9 @@ app.use(async (ctx,next)=>{
 })
 // index alias
 app.use(async (ctx,next)=>{
-  debug(ctx.url)
-  debug(ctx.path)
   if( ctx.path === '/' && config.index_alias){
-    ctx.url = config.index_alias
+    ctx.path= config.index_alias
   }
-  debug(ctx.url)
-  debug(ctx.path)
   await next()
 })
 
