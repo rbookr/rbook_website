@@ -18,6 +18,6 @@ declare class BookSystem implements bookSystem {
     /** 查找文章 */
     find(_id: string): Promise<unknown>;
     /** 渲染 */
-    render(filePath: string): Promise<any>;
+    render(filePath: string): Promise<string>;
 }
 export default BookSystem;
