@@ -1,9 +1,10 @@
 {
-    "scripts":{
-        "dev": "DEBUG=debug ./node_modules/.bin/nodemon bin/rbook config.yml",
-        "build-bookSystem": "tsc --build"
-    },
+  "scripts": {
+    "dev": "DEBUG=debug ./node_modules/.bin/nodemon bin/rbook config.yml",
+    "build-bookSystem": "tsc --build"
+  },
   "dependencies": {
+    "@types/ejs": "^2.6.3",
     "ejs": "^2.7.1",
     "emoji-toolkit": "^5.0.5",
     "js-yaml": "^3.13.1",

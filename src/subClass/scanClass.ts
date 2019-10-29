@@ -14,11 +14,7 @@ class Scan {
         this.parent = parent
     }
 
-    split(filePath:string):article_split_info{
-        if( !pathFn.isAbsolute(filePath))
-            filePath = pathFn.join(this.parent.localRespository,filePath)
-        let str = fs.readFileSync(filePath,{encoding:'utf-8'})
-
+    splitStr(str:string,filePath:string){
         if (this.rFrontMatter.test(str)) {
             let match = str.match(this.rFrontMatter);
             try {
@@ -33,6 +29,13 @@ class Scan {
             }
         }
         return {head:{},content: str};
+    }
+
+    split(filePath:string):article_split_info{
+        if( !pathFn.isAbsolute(filePath))
+            filePath = pathFn.join(this.parent.localRespository,filePath)
+        let str = fs.readFileSync(filePath,{encoding:'utf-8'})
+        return this.splitStr(str, filePath)
     }
 
     gen_document(filePath:string):document{

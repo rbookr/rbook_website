@@ -31,9 +31,18 @@ class url {
     }
 
     /** 通过nedb查找 */
-    id_2_path(url:string){
+    //id_2_path(url:string){
         //let _id = this.url_to_id(url)
-    }
+        //return new Promise( (res,rej)=>{
+            ////@ts-ignore
+            //this.parent.Db.findOne({_id},(err,doc)=>{
+                //if(err)
+                    //rej(err)
+                //else
+                    //res(doc)
+            //})
+        //})
+    //}
 }
 
 export default url

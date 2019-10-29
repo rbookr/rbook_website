@@ -2,6 +2,10 @@ declare class Scan {
     parent: bookSystem;
     rFrontMatter: RegExp;
     constructor(parent: bookSystem);
+    splitStr(str: string, filePath: string): {
+        head: any;
+        content: string;
+    };
     split(filePath: string): article_split_info;
     gen_document(filePath: string): document;
     /** 目录扫描 */

@@ -14,6 +14,11 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/ejs@^2.6.3":
+  version "2.6.3"
+  resolved "https://registry.npm.taobao.org/@types/ejs/download/@types/ejs-2.6.3.tgz#b6509e9925d7eb5e95c8c73b6492e5baae7c1e6a"
+  integrity sha1-tlCemSXX616VyMc7ZJLluq58Hmo=
+
 "@types/js-yaml@^3.12.1":
   version "3.12.1"
   resolved "https://registry.npm.taobao.org/@types/js-yaml/download/@types/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"

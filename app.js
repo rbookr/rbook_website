@@ -22,6 +22,7 @@ app.use(logger())
 app.use(favicon( global.config.favicon || __dirname + '/static/images/favicon.ico'));
 
 app.use(require('koa-static')(__dirname + '/static'))
+app.use(require('koa-static')(__dirname + '/markdown-r/assets'))
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'

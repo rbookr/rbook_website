@@ -18,8 +18,8 @@
     display: flex;
     align-items: center; }
     .site-header .site-header-title h3 {
-      font-size: 5em;
-      color: #ccc;
+      font-size: 3em;
+      color: white;
       text-shadow: 5px 5px 5px #333; }
   .site-header .site-header-menu {
     height: 20px;
@@ -87,3 +87,51 @@ footer {
 .article-list .article-list-table table .th-author {
   text-align: center;
   width: 120px; }
+
+.markdown-body .toc-body {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  border: 1px solid #d2d2d2;
+  background: #f8f8f8;
+  padding: 0;
+  border-radius: 2px;
+  width: 230px; }
+  .markdown-body .toc-body.toc-content-hidden {
+    width: 60px; }
+    .markdown-body .toc-body.toc-content-hidden .toc-content {
+      display: none; }
+    .markdown-body .toc-body.toc-content-hidden .toc-title h3 {
+      display: none; }
+    .markdown-body .toc-body.toc-content-hidden .toc-title:after {
+      content: '+'; }
+  .markdown-body .toc-body .toc-title {
+    height: 46px;
+    text-align: center;
+    width: 100%;
+    background: #ccc;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 10px 0;
+    cursor: pointer; }
+    .markdown-body .toc-body .toc-title h3 {
+      margin: 0;
+      position: relative; }
+    .markdown-body .toc-body .toc-title:after {
+      background: #e6e6e6;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 2px;
+      content: '-';
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 10px; }
+    .markdown-body .toc-body .toc-title:hover:after {
+      background: white; }
+  .markdown-body .toc-body .toc-content {
+    padding: 1em;
+    width: 100%;
+    overflow-x: auto; }
+  .markdown-body .toc-body ul {
+    margin-left: 0; }

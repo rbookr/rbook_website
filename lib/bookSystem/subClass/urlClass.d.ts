@@ -8,7 +8,5 @@ declare class url {
      * */
     path_2_id(resolve_path: string): any;
     path_2_url(resolve_path: string): string;
-    /** 通过nedb查找 */
-    id_2_path(url: string): void;
 }
 export default url;
