@@ -9,6 +9,9 @@ const favicon = require('koa-favicon');
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const redis_class = require("./lib/redis")
+
+global.Cache = new redis_class(config.redis)
 
 
 // error handler
