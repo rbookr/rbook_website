@@ -1,10 +1,14 @@
+body {
+  padding: 0;
+  margin: 0; }
+
 .container {
   max-width: 750px;
   margin: 30px auto;
   margin-bottom: 80px; }
 
 .site-header {
-  height: 193px;
+  height: 200px;
   width: 100%;
   padding: 1.5rem 0;
   color: #fff;
@@ -22,14 +26,17 @@
       color: white;
       text-shadow: 5px 5px 5px #333; }
   .site-header .site-header-menu {
-    height: 20px;
     flex-grow: 0; }
     .site-header .site-header-menu ul {
+      margin: 0;
+      padding: 0;
       font-size: 1.2em;
       display: flex; }
       .site-header .site-header-menu ul li {
+        list-style: none;
         margin: 5px 10px; }
         .site-header .site-header-menu ul li a {
+          text-decoration: none;
           padding: 5px;
           border-radius: 3px;
           color: #fff;
@@ -52,6 +59,8 @@ footer {
   bottom: 0;
   width: 100%;
   display: flex;
+  height: 30px;
+  z-index: 100;
   flex-direction: row;
   justify-content: center;
   color: #7c7c7c;
@@ -59,6 +68,7 @@ footer {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-width: 1px 0 0; }
   footer h5 {
+    margin: 0;
     font-family: 'Ubuntu Mono';
     height: 30px;
     line-height: 30px;
@@ -70,23 +80,26 @@ footer {
   footer a:hover {
     color: lightblue; }
 
-.article-list .article-list-table table tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  display: flex; }
-
-.article-list .article-list-table table tr.head-table {
-  background: #d9d9d9;
-  font-weight: bolder; }
-
-.article-list .article-list-table table .th-title {
-  flex-grow: 1;
-  font-weight: bold; }
-  .article-list .article-list-table table .th-title a:hover {
-    color: blue; }
-
-.article-list .article-list-table table .th-author {
-  text-align: center;
-  width: 120px; }
+.article-list .article-list-table table.list-table {
+  width: 100%; }
+  .article-list .article-list-table table.list-table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    padding: 5px 3px; }
+    .article-list .article-list-table table.list-table tr:hover {
+      background: #f2f2f2;
+      cursor: pointer; }
+  .article-list .article-list-table table.list-table tr.head-table {
+    background: #d9d9d9;
+    font-weight: bolder; }
+  .article-list .article-list-table table.list-table .th-title {
+    flex-grow: 1;
+    font-weight: bold; }
+    .article-list .article-list-table table.list-table .th-title a:hover {
+      color: blue; }
+  .article-list .article-list-table table.list-table .th-author {
+    text-align: center;
+    width: 120px; }
 
 .markdown-body .toc-body {
   position: fixed;
