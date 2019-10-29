@@ -1,6 +1,7 @@
 //-文章列表
 extends layout
 
+include ./_partical/pagination.pug
 block content
   .article-list
     .article-list-table
@@ -17,4 +18,5 @@ block content
                 a(href="/article/"+item._id data-tooltip="作者:"+ item.head.author || config.Author.name) #{item.title}
               td tag
               td catalog
+    +pagination()
 

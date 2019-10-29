@@ -148,3 +148,27 @@ footer {
     overflow-x: auto; }
   .markdown-body .toc-body ul {
     margin-left: 0; }
+
+.pagination-container {
+  display: flex;
+  margin: 20px 0;
+  justify-content: center; }
+  .pagination-container ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0; }
+    .pagination-container ul.pagination li {
+      display: inline; }
+      .pagination-container ul.pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd; }
+      .pagination-container ul.pagination li a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50; }
+      .pagination-container ul.pagination li a:hover:not(.active) {
+        background-color: #ddd; }
