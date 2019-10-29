@@ -9,7 +9,7 @@ declare class Scan {
     split(filePath: string): article_split_info;
     gen_document(filePath: string): document;
     /** 目录扫描 */
-    scanCatalogues(): void;
+    scanCatalogues(catalogPath: string): SUMMARY[] | undefined;
     is_yaml_file(_path: string): boolean;
     /** 读取目录 */
     loadSummary(path: string, parent: SUMMARY): null | undefined;

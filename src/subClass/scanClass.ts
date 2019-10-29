@@ -61,7 +61,13 @@ class Scan {
     }
 
     /** 目录扫描 */
-    scanCatalogues(){
+    scanCatalogues(catalogPath:string){
+        let catalog:SUMMARY = {name:''}
+        let path = catalogPath
+        if( !pathFn.isAbsolute(path))
+            path = pathFn.join(this.parent.localRespository,path)
+        this.loadSummary(path, <SUMMARY>catalog)
+        return catalog.children
     }
 
     is_yaml_file(_path:string){
@@ -106,15 +112,21 @@ class Scan {
 
             if(stat.isFile()) //是文件
             {
-                parent.children.push({
-                    name:emojiToolkit.shortnameToImage( title || 'unkown' ),
-                    url: Url.path_2_url(pathFn.relative(this.parent.localRespository, real_path))
-                })
+                parent.children.push(
+                    Object.assign(item, 
+                        {
+                            name:emojiToolkit.shortnameToImage( title || 'unkown' ),
+                            url: Url.path_2_url(pathFn.relative(this.parent.localRespository, real_path))
+                        }
+                    )
+                )
             }
             else if( stat.isDirectory()){ //是目录
-                var new_data:SUMMARY = {
-                    name: emojiToolkit.shortnameToImage( title || 'unkown')
-                }
+                var new_data:SUMMARY = Object.assign(item, 
+                    {
+                        name: emojiToolkit.shortnameToImage( title || 'unkown')
+                    }
+                )
 
                 this.loadSummary(real_path,new_data)
 

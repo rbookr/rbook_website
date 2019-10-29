@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const fs = require("fs")
 const pathFn = require("path")
+const send = require("koa-send")
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
@@ -37,6 +38,19 @@ app.use(async (ctx, next) => {
 })
 
 // middlewares
+
+app.use( async (ctx,next)=>{
+    let ext = pathFn.extname(ctx.path)
+    if( ['.png','.jpg','.gif'].indexOf(ext) !== -1){
+        debug(ctx.path)
+        //let real_path = pathFn.join(C.book_path,ctx.path)
+        await send(ctx,ctx.path,{ root: config.localRespository })
+        return
+    }
+    else
+        await next()
+})
+
 app.use(async (ctx,next)=>{
   ctx.state = {
     config:global.config

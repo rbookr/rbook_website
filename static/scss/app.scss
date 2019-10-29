@@ -8,6 +8,17 @@ body {
     margin-bottom: 80px;
 }
 
+.tree-menu-container{
+    .cover {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        img {
+            max-height:200px;
+        }
+    }
+}
+
 @import "./head.scss";
 @import "./footer.scss";
 @import "./list-table.scss";

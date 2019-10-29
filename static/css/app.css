@@ -7,6 +7,13 @@ body {
   margin: 30px auto;
   margin-bottom: 80px; }
 
+.tree-menu-container .cover {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .tree-menu-container .cover img {
+    max-height: 200px; }
+
 .site-header {
   height: 200px;
   width: 100%;

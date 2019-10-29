@@ -37,6 +37,12 @@ async function initJobs(){
   //扫描
   await bookSystem.Scan.scanAllRespository()
   debug(`======== 扫描所有数据 结束=======`)
+  //扫描 目录
+  let catalogs = bookSystem.Scan.scanCatalogues(config.catalogueEnterPoints)
+  debug(`======== 扫描所有目录 结束=======`)
+  //debug(catalogs)
+  global.catalogs = catalogs
+  //扫描 目录
   //仓库clone
   //仓库更新
 }
