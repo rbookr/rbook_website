@@ -50,7 +50,8 @@ class Scan {
             _id: fileInfo.head._id || md5(resolve_path),
             real_path,
             resolve_path,
-            update_time:Date.now(),
+            update_time:fileInfo.head.update? moment(fileInfo.head.update).unix()  : 0,
+            title: fileInfo.head.title  ? fileInfo.head.title : pathFn.basename(resolve_path,'.md'),
             head:fileInfo.head
         }
         return doc
@@ -128,9 +129,7 @@ class Scan {
         files.map( async ({path,rpath,full_path})=>{
             /** 存储 进 数据库 */
             let doc = this.gen_document(full_path)
-
-            console.log(doc)
-
+            //console.log(doc)
             //@ts-ignore
             await this.parent.Db.update(doc)
 

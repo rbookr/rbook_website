@@ -4,5 +4,6 @@ interface document {
     real_path:string
     resolve_path:string
     update_time:number
+    title:string
     head:{}
 }

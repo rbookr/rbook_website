@@ -32,6 +32,28 @@ class Data {
             })
         })
     }
+    count(query:any){
+        return new Promise( ( res,rej)=>{
+            this.db.count(query, function(err,count){
+                if(err)
+                    rej(err)
+                else
+                    res(count)
+            })
+        })
+    }
+
+    /** pagenation */
+    pagenation(query:any,page:number,pageSize:number){
+        return new Promise( ( res,rej)=>{
+            this.db.find(query).sort({update_time:-1}).skip((page-1)*pageSize).limit(pageSize).exec((err,doc)=>{
+                if(err)
+                    rej(err)
+                else
+                    res(doc)
+            })
+        })
+    }
 }
 
 export default Data

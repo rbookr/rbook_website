@@ -35,6 +35,8 @@ global.bookSystem = new BookSystemClass(global.config)
 async function initJobs(){
   await bookSystem.clear()      //清空数据库
   //扫描
+  await bookSystem.Scan.scanAllRespository()
+  debug(`======== 扫描所有数据 结束=======`)
   //仓库clone
   //仓库更新
 }

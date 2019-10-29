@@ -1,7 +1,9 @@
 .container {
     max-width: 750px;
     margin: 30px auto;
+    margin-bottom: 80px;
 }
 
 @import "./head.scss";
 @import "./footer.scss";
+@import "./list-table.scss";

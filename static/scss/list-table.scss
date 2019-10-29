@@ -1,0 +1,25 @@
+.article-list{
+    .article-list-table{
+        table {
+            tr {
+                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
+                display: flex;
+            }
+            tr.head-table {
+                background: darken($color: #f2f2f2, $amount: 10%);
+                font-weight: bolder;
+            }
+            .th-title {
+                flex-grow: 1;
+                font-weight: bold;
+                a:hover {
+                    color: blue;
+                }
+            }
+            .th-author{
+                text-align: center;
+                width: 120px;
+            }
+        }
+    }
+}

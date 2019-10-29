@@ -1,0 +1,17 @@
+.article-list .article-list-table table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex; }
+
+.article-list .article-list-table table tr.head-table {
+  background: #d9d9d9;
+  font-weight: bolder; }
+
+.article-list .article-list-table table .th-title {
+  flex-grow: 1;
+  font-weight: bold; }
+  .article-list .article-list-table table .th-title a:hover {
+    color: blue; }
+
+.article-list .article-list-table table .th-author {
+  text-align: center;
+  width: 120px; }
