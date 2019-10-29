@@ -8,15 +8,22 @@ block content
       table.list-table
         thead
           tr.head-table
+            th.th-id #id
             th.th-title 标题
             th.th-tags 标签
-            th.th-tags 分类
+            th.th-catalog 分类
         tbody
-          each item in list
+          each item,index in list
             tr
-              td.th-title
-                a(href="/article/"+item._id data-tooltip="作者:"+ item.head.author || config.Author.name) #{item.title}
-              td tag
-              td catalog
+              td.td-id= index+1
+              td.td-title
+                a(href="/article/"+item._id) #{item.title}
+              td.td-tags
+                if item.head.tags
+                  div.tags-content
+                    each tag in item.head.tags
+                      span
+                        a(href="/tags?tag="+tag) tag
+              td.td-catalog= item.head.catalog || ""
     +pagination()
 

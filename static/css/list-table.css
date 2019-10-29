@@ -1,12 +1,15 @@
 .article-list .article-list-table table.list-table {
-  width: 100%; }
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  border-color: grey; }
+  .article-list .article-list-table table.list-table td, .article-list .article-list-table table.list-table th {
+    padding: 15px 0px; }
   .article-list .article-list-table table.list-table tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    display: flex;
-    padding: 5px 3px; }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
     .article-list .article-list-table table.list-table tr:hover {
-      background: #f2f2f2;
-      cursor: pointer; }
+      background: #b3e5fc; }
   .article-list .article-list-table table.list-table tr.head-table {
     background: #d9d9d9;
     font-weight: bolder; }
@@ -15,6 +18,20 @@
     font-weight: bold; }
     .article-list .article-list-table table.list-table .th-title a:hover {
       color: blue; }
-  .article-list .article-list-table table.list-table .th-author {
-    text-align: center;
-    width: 120px; }
+  .article-list .article-list-table table.list-table .td-title {
+    padding-left: 8px;
+    font-weight: 600; }
+  .article-list .article-list-table table.list-table .td-tags, .article-list .article-list-table table.list-table .td-catalog, .article-list .article-list-table table.list-table .td-id {
+    text-align: center; }
+  .article-list .article-list-table table.list-table .tags-content {
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap; }
+    .article-list .article-list-table table.list-table .tags-content span {
+      background: rgba(204, 204, 204, 0.3);
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      margin: 1px 1px;
+      padding: 3px; }
+      .article-list .article-list-table table.list-table .tags-content span a {
+        text-decoration: none; }

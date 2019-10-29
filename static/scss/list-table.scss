@@ -2,13 +2,19 @@
     .article-list-table{
         table.list-table {
             width: 100%;
+            display: table;
+            //border-collapse: separate;
+            border-collapse: collapse;
+            border-spacing: 2px;
+            border-color: grey;
+            td,th {
+                padding:15px 0px;
+            }
+
             tr {
-                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
-                display: flex;
-                padding:5px 3px;
+                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
                 &:hover {
-                    background: #f2f2f2;
-                    cursor: pointer;
+                    background: #b3e5fc;
                 }
             }
             tr.head-table {
@@ -22,9 +28,27 @@
                     color: blue;
                 }
             }
-            .th-author{
+            .td-title {
+                padding-left: 8px;
+                font-weight: 600;
+            }
+            .td-tags,.td-catalog,.td-id{
                 text-align: center;
-                width: 120px;
+            }
+            .tags-content {
+                max-width: 300px;
+                display: flex;
+                flex-wrap: wrap;
+                span {
+                    background: rgba($color: #ccc, $alpha: 0.3);
+                    border: 1px solid rgba($color: #ccc, $alpha: 1.0);
+                    border-radius: 3px;
+                    margin:1px 1px;
+                    padding:3px;
+                    a {
+                        text-decoration: none;
+                    }
+                }
             }
         }
     }
