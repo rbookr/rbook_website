@@ -1,0 +1,13 @@
+//-文章列表
+extends layout
+
+block content
+  .timeline
+    ul
+      each item,index in history
+        li
+          i= history.length-index
+          h3= item[0]
+          .content
+            pre= item[1]
+            pre.change_files= change_files[index]

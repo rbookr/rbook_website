@@ -1,0 +1,22 @@
+include ./icon.pug
+div.info
+  div.main
+    span.author
+      +icon('author2')
+      | #{info.head.author || config.Author.name ||"未知"}
+    span.time
+      +icon('time')
+      | #{info.head.update || '未知'}
+    if info.head.catalog
+      span.catalog 
+        +icon('classifi-copy')
+        | #{info.head.catalog}
+    span.count 
+      +icon('_huabanfuben')
+      | #{ viewcount || 0}
+  div.tags
+    if info.head.tags
+      +icon('tag1')
+      each tag in info.head.tags
+        span.tag
+          a(href="/list?tag="+tag) #{tag}

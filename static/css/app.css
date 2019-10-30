@@ -14,6 +14,21 @@ body {
   .tree-menu-container .cover img {
     max-height: 200px; }
 
+span.tag {
+  background: rgba(204, 204, 204, 0.1);
+  margin: 1px 1px;
+  padding: 3px; }
+  span.tag a {
+    text-decoration: none; }
+  span.tag:hover {
+    background: rgba(204, 204, 204, 0.3);
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background: #fff; }
+    span.tag:hover a {
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: bolder; }
+
 .site-header {
   height: 200px;
   width: 100%;
@@ -116,14 +131,6 @@ footer {
     max-width: 300px;
     display: flex;
     flex-wrap: wrap; }
-    .article-list .article-list-table table.list-table .tags-content span {
-      background: rgba(204, 204, 204, 0.3);
-      border: 1px solid #cccccc;
-      border-radius: 3px;
-      margin: 1px 1px;
-      padding: 3px; }
-      .article-list .article-list-table table.list-table .tags-content span a {
-        text-decoration: none; }
 
 .markdown-body .toc-body {
   position: fixed;
@@ -248,3 +255,23 @@ footer {
       *white-space: normal !important;
       border-radius: 5px;
       font-family: 'Ubuntu Mono'; }
+
+.info {
+  color: #777;
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-family: 'Ubuntu Mono';
+  margin-bottom: 20px; }
+  .info .iconfont {
+    margin-right: 0.5rem; }
+  .info .main {
+    text-align: center; }
+    .info .main span {
+      border-right: 1px dotted #85878a;
+      padding: 0 0.5rem; }
+    .info .main span:last-child {
+      border-right: none; }
+  .info .tags {
+    margin-top: 0.8rem;
+    text-align: center; }

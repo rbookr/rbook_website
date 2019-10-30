@@ -22,8 +22,8 @@ block content
                 if item.head.tags
                   div.tags-content
                     each tag in item.head.tags
-                      span
-                        a(href="/tags?tag="+tag) tag
+                      span.tag
+                        a(href="/list?tag="+tag) tag
               td.td-catalog= item.head.catalog || ""
     +pagination(pagination)
 

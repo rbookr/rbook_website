@@ -75,7 +75,7 @@ class Scan {
     }
 
     /** 读取目录 */
-    loadSummary(path:string,parent:SUMMARY){
+    async loadSummary(path:string,parent:SUMMARY){
         let basePath = path
         let summaryPath = path
         //@ts-ignore
@@ -120,6 +120,11 @@ class Scan {
                         }
                     )
                 )
+                let doc = this.gen_document(real_path)
+                //console.log(doc)
+                //@ts-ignore
+                await this.parent.Db.update(doc)
+
             }
             else if( stat.isDirectory()){ //是目录
                 var new_data:SUMMARY = Object.assign(item, 

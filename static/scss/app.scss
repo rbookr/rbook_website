@@ -19,9 +19,30 @@ body {
     }
 }
 
+span.tag {
+    background: rgba($color: #ccc, $alpha: 0.1);
+    margin:1px 1px;
+    padding:3px;
+    a {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background: rgba($color: #ccc, $alpha: 0.3);
+        border: 1px solid rgba($color: #ccc, $alpha: 1.0);
+        border-radius: 3px;
+        background: #fff;
+        a{
+            color: rgba($color: #000000, $alpha: 0.6);
+            font-weight: bolder;
+        }
+    }
+}
+
 @import "./head.scss";
 @import "./footer.scss";
 @import "./list-table.scss";
 @import "./toc.scss";
 @import "./pagination.scss";
 @import "./history.scss";
+@import "./info.scss";

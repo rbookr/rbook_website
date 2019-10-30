@@ -1,0 +1,19 @@
+.info {
+  color: #777;
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-family: 'Ubuntu Mono';
+  margin-bottom: 20px; }
+  .info .iconfont {
+    margin-right: 0.5rem; }
+  .info .main {
+    text-align: center; }
+    .info .main span {
+      border-right: 1px dotted #85878a;
+      padding: 0 0.5rem; }
+    .info .main span:last-child {
+      border-right: none; }
+  .info .tags {
+    margin-top: 0.8rem;
+    text-align: center; }

@@ -27,11 +27,3 @@
     max-width: 300px;
     display: flex;
     flex-wrap: wrap; }
-    .article-list .article-list-table table.list-table .tags-content span {
-      background: rgba(204, 204, 204, 0.3);
-      border: 1px solid #cccccc;
-      border-radius: 3px;
-      margin: 1px 1px;
-      padding: 3px; }
-      .article-list .article-list-table table.list-table .tags-content span a {
-        text-decoration: none; }

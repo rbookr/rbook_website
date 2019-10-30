@@ -12,7 +12,7 @@ declare class Scan {
     scanCatalogues(catalogPath: string): SUMMARY[] | undefined;
     is_yaml_file(_path: string): boolean;
     /** 读取目录 */
-    loadSummary(path: string, parent: SUMMARY): null | undefined;
+    loadSummary(path: string, parent: SUMMARY): Promise<null | undefined>;
     /**
      * @description 扫描所有内容并存入nedb
      * */
