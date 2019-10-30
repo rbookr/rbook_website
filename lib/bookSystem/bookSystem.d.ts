@@ -2,6 +2,7 @@ import Url from "./subClass/urlClass";
 import Scan from "./subClass/scanClass";
 import Db from './subClass/DataClass';
 import Render from './subClass/renderClass';
+import Repository from './subClass/repositoryClass';
 declare class BookSystem implements bookSystem {
     remoteRespository: string;
     localRespository: string;
@@ -12,6 +13,7 @@ declare class BookSystem implements bookSystem {
     Url: Url;
     Db: Db;
     Render: Render;
+    Repository: Repository;
     constructor(opts: bookSystemOpts);
     /** 清空数据库 */
     clear(): Promise<unknown>;

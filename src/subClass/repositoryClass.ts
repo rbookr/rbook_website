@@ -45,3 +45,5 @@ class repository {
   }
 
 }
+
+export default repository

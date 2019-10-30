@@ -1,0 +1,19 @@
+#!/bin/python3
+import os
+author="Rainboy"
+template='''---
+_id: {_id}
+title: title
+date: {time}
+update: {time}
+author: {author}
+cover: 
+tags:
+  - tag
+catalog:
+  - catalog
+---
+'''
+_id=os.popen('date +%s%N | md5sum | head -c 10').read()
+time=os.popen('date +"%Y-%m-%d %H:%M"').read().strip()
+print(template.format(_id=_id,time=time,author=author))

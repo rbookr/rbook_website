@@ -2,6 +2,7 @@ import Url from "./subClass/urlClass"
 import Scan from "./subClass/scanClass"
 import Db from './subClass/DataClass'
 import Render from './subClass/renderClass'
+import Repository from './subClass/repositoryClass'
 import {fileURLToPath} from 'url'
 class BookSystem implements bookSystem{
     remoteRespository:string//远程仓库
@@ -14,6 +15,7 @@ class BookSystem implements bookSystem{
     Url:Url
     Db:Db
     Render:Render
+    Repository:Repository
 
     constructor(opts:bookSystemOpts){
 
@@ -27,6 +29,7 @@ class BookSystem implements bookSystem{
         this.Url = new Url(this)
         this.Db = new Db(this)
         this.Render = new Render(this)
+        this.Repository = new Repository(this)
     }
 
     /** 清空数据库 */
