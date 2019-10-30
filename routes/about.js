@@ -15,10 +15,13 @@ router.get('/about',async (ctx ,next)=>{
 
       let {head} = bookSystem.Scan.split(path)
 
+      let viewcount = await Cache.count(`about`)
+
       await ctx.render('article',{
         title:'关于',
         article,
-        info:{ head }
+        info:{ head },
+        viewcount
       })
       return
     }
