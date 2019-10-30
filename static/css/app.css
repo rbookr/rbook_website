@@ -199,3 +199,52 @@ footer {
       .pagination-container ul.pagination li a.disable {
         pointer-events: none;
         background: #f2f2f2; }
+
+.timeline {
+  font-style: normal; }
+  .timeline ul li {
+    text-align: left;
+    position: relative;
+    padding-left: 50px;
+    list-style-type: none;
+    margin: 0;
+    display: block;
+    border: 1px solid transparent; }
+    .timeline ul li h3 {
+      margin: 2px; }
+    .timeline ul li .content {
+      padding: 20px; }
+    .timeline ul li i {
+      position: absolute;
+      left: -7.5px;
+      font-weight: 900;
+      font-family: 'Ubuntu Mono', monospace !important;
+      border-radius: 50%;
+      color: #5fb878;
+      border: 2px solid #5fb878;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff; }
+    .timeline ul li:before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      display: block;
+      background-color: #e6e6e6e6;
+      height: 100%;
+      width: 2px; }
+    .timeline ul li pre:first-child {
+      font-weight: bolder; }
+    .timeline ul li pre {
+      background: #dfdfdf;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 5px rgba(51, 51, 51, 0.5);
+      padding: 15px;
+      white-space: pre-wrap !important;
+      word-wrap: break-word !important;
+      *white-space: normal !important;
+      border-radius: 5px;
+      font-family: 'Ubuntu Mono'; }
