@@ -7,7 +7,17 @@
       ['historyrecord','/history','历史记录'],
       ['about','/about','关于'],
   ]
-div.site-header.header-background( style="background-image: url(https://i.loli.net/2019/05/06/5ccfffeae9910.jpg)")
+- 
+  function get_cover(){
+    if( cover )
+        return cover
+    if( info && info.head && info.head.cover)
+      return info.head.cover
+    if( config.default_cover )
+      return  config.default_cover 
+    return '/images/cover.gif'
+  }
+div.site-header.header-background( style="background-image: url("+ get_cover()+")")
   .site-header-title
     h3= title || "未知"
   .site-header-menu

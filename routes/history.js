@@ -44,11 +44,7 @@ router.get('/',async (ctx,next)=>{
   }
 
   await ctx.render('history',{
-    post:{
-      head:{
-        title:'历史记录[近20条]'
-      }
-    },
+    title:'历史记录[近20条]',
     history,
     change_files
   });

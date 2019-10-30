@@ -12,11 +12,13 @@ router.get('/about',async (ctx ,next)=>{
         article = await bookSystem.Render.render(path)
         Cache.set(article,config.cache_time)
       }
+
       let {head} = bookSystem.Scan.split(path)
+
       await ctx.render('article',{
         title:'关于',
         article,
-        head
+        info:{ head }
       })
       return
     }
