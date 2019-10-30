@@ -39,6 +39,13 @@ span.tag {
     }
 }
 
+
+.markdown-body {
+  a {
+    font-family: 'Ubuntu Mono',monospace;
+  }
+}
+
 @import "./head.scss";
 @import "./footer.scss";
 @import "./list-table.scss";

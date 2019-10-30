@@ -98,7 +98,7 @@ class Scan {
         if( !summary_array ) return
 
         for(let item of summary_array){
-            let {path:subpath,title} = item
+            let {path:subpath,title,name} = item
             let real_path
             try {
                 real_path = pathFn.join(basePath,subpath)
@@ -115,7 +115,7 @@ class Scan {
                 parent.children.push(
                     Object.assign(item, 
                         {
-                            name:emojiToolkit.shortnameToImage( title || 'unkown' ),
+                            name:emojiToolkit.shortnameToImage( title || name ||'unkown' ),
                             url: Url.path_2_url(pathFn.relative(this.parent.localRespository, real_path))
                         }
                     )
@@ -129,7 +129,7 @@ class Scan {
             else if( stat.isDirectory()){ //是目录
                 var new_data:SUMMARY = Object.assign(item, 
                     {
-                        name: emojiToolkit.shortnameToImage( title || 'unkown')
+                        name: emojiToolkit.shortnameToImage( title || name ||'unkown')
                     }
                 )
 

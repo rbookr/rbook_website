@@ -29,6 +29,9 @@ span.tag {
       color: rgba(0, 0, 0, 0.6);
       font-weight: bolder; }
 
+.markdown-body a {
+  font-family: 'Ubuntu Mono',monospace; }
+
 .site-header {
   height: 200px;
   width: 100%;
