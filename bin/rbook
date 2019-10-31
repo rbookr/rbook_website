@@ -62,7 +62,7 @@ initJobs()
 
 /* 4.====== 创建http 服务器 ====== */
 var app = require('../app');
-var port = 3033
+var port = config.PORT || 3033
 var server = http.createServer(app.callback());
 server.listen(port)
 server.on('listening', onListening);

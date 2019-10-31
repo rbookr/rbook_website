@@ -84,8 +84,4 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
-//app.listen('3000',function(){
-  //console.log('listen at port 30000')
-//})
-
 module.exports = app

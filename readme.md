@@ -22,6 +22,23 @@
 
   是否使用 目录
 
-## 设计思路
+## 安装
 
-![](./doc/bookSystemClass.png)
+需要:`node >= 10`,`git`,`yarn`,`redis`
+
+```
+git clone https://github.com/rbookr/rbook
+cd rbook && git submodule init && git submodule update
+yarn add && cd markdown-r && yarn add
+```
+
+## 启动
+
+
+### 使用 pm2
+
+```
+yarn global add pm2
+pm2 start tools/pm2.demo.yml
+```
+
