@@ -8,7 +8,16 @@ router.prefix('/article')
 
 router.get('/:id', async function (ctx, next) {
   let Info = await global.bookSystem.find(ctx.params.id)
-  //console.log(Info)
+
+  /* 有密码 */
+  if(Info.head && Info.head.password && Info.head.password !== ''){
+    let password_in_query = ctx.query.password
+    if( !password_in_query || password_in_query !== Info.head.password){
+      await ctx.render('password',{title:'需要密码'})
+      return
+    }
+  }
+
   let article = await Cache.get(`article-${Info._id}`)
   let viewcount = await Cache.count(`article-${Info._id}`)
   if( !article){
