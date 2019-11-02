@@ -1,8 +1,16 @@
 const qs= require("querystring")
-exports.generator_pagenaion_info = function(base,query,current,totalPage){
+exports.generator_pagenaion_info = function(base,list_query,current,totalPage){
   let size = 3
   let right_limit = Math.min(current+3,totalPage)
   let left_limit = Math.max(current-3,1)
+
+  let query = {}
+  for( let key in list_query) {
+    if( /^head\..*/.test(key)){
+      let _key = key.split(".")[1]
+      query[_key] = list_query[key]
+    }
+  }
 
   let left_go = 0;
   let right_go = 0;

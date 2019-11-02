@@ -8,16 +8,25 @@ router.get('/',async (ctx,next)=>{
   let page = parseInt(query.page || '1')
   let pageSize = config.pagenationSize || 30
 
-  let article_count = await bookSystem.Db.count({})
+  let list_query = {}
+  if( query.tag ){
+    list_query = { "head.tags" : { $in:query.tag.split(',') }}
+  }
+  else if( query.catalog) {
+    Object.assign(list_query, {"head.catalog":query.catalog})
+  }
+  debug(list_query)
+
+  let article_count = await bookSystem.Db.count(list_query)
   let totalPage = Math.ceil( article_count / pageSize)
-  let docs = await bookSystem.Db.pagenation({},page,pageSize);
+  let docs = await bookSystem.Db.pagenation(list_query,page,pageSize);
   /*  first,last { url: active,}
    *
    * */
   await ctx.render('list',{
     title:"列表",
     list:docs,
-    pagination:generator_pagenaion_info(ctx.path,query,page,totalPage)
+    pagination:generator_pagenaion_info(ctx.path,list_query,page,totalPage)
   })
 })
 
