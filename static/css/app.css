@@ -30,6 +30,11 @@ span.tag {
       color: rgba(0, 0, 0, 0.6);
       font-weight: bolder; }
 
+span.tag-split {
+  margin: 0 1rem; }
+  span.tag-split::before {
+    content: "|"; }
+
 .markdown-body a {
   font-family: 'Ubuntu Mono',monospace; }
 

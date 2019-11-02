@@ -40,6 +40,13 @@ span.tag {
     }
 }
 
+span.tag-split {
+    margin:0 1rem;
+    &::before {
+        content: "|";
+    }
+}
+
 
 .markdown-body {
   a {

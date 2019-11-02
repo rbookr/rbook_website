@@ -8,9 +8,10 @@ div.info
       +icon('time')
       | #{info.head.update || '未知'}
     if info.head.catalog
-      span.catalog 
+      span.catalog
         +icon('classifi-copy')
-        | #{info.head.catalog}
+        span.tag
+          a(href="/list?catalog="+info.head.catalog) #{info.head.catalog}
     span.count 
       +icon('_huabanfuben')
       | #{ viewcount || 0}
