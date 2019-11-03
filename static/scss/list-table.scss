@@ -1,44 +1,45 @@
+$id_bg_color:#377D6A;
+$id_color:#f2f2f2;
 .article-list{
-    .article-list-table{
-        table.list-table {
-            width: 100%;
-            display: table;
-            //border-collapse: separate;
-            border-collapse: collapse;
-            border-spacing: 2px;
-            border-color: grey;
-            td,th {
-                padding:15px 0px;
-            }
-
-            tr {
-                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .article-box {
+        display: flex;
+        $height: auto;
+        height: $height;
+        border: 1px solid #ccc;
+        margin: 10px 10px;
+        border-radius: 3px;
+        .id {
+            background: $id_bg_color;
+            color: $id_color;
+            flex-grow: 0;
+            height: $height;
+            font-size: 3rem;
+            width: 50px;
+        }
+        .box {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            .article-title{
+                font-size: 1.5rem;
+                padding:0.5rem;
+                $background: #ccc;
+                background: $background;
+                a {
+                    text-decoration: none;
+                }
                 &:hover {
-                    background: #b3e5fc;
+                    background: lighten($color: $background, $amount: 5%);
+                    font-weight: bold;
                 }
             }
-            tr.head-table {
-                background: darken($color: #f2f2f2, $amount: 10%);
-                font-weight: bolder;
-            }
-            .th-title {
-                flex-grow: 1;
-                font-weight: bold;
-                a:hover {
-                    color: blue;
-                }
-            }
-            .td-title {
-                padding-left: 8px;
-                font-weight: 600;
-            }
-            .td-tags,.td-catalog,.td-id{
-                text-align: center;
-            }
-            .tags-content {
-                max-width: 300px;
-                display: flex;
-                flex-wrap: wrap;
+            .box-tag {
+                padding: 0.5rem;
             }
         }
     }

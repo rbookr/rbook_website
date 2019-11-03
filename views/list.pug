@@ -2,31 +2,45 @@
 extends layout
 
 include ./_partical/pagination.pug
+include ./_partical/icon.pug
 block content
   .article-list
-    .article-list-table
-      table.list-table
-        thead
-          tr.head-table
-            th.th-id #
-            th.th-title 标题
-            th.th-tags 标签
-            th.th-catalog 分类
-        tbody
-          each item,index in list
-            tr
-              td.td-id= index+1
-              td.td-title
-                a(href="/article/"+item._id) #{item.title}
-              td.td-tags
-                if item.head.tags
-                  div.tags-content
-                    each tag in item.head.tags
-                      span.tag
-                        a(href="/list?tag="+tag) #{tag}
-              td.td-catalog 
-                if item.head.catalog
-                  span.tag
-                    a(href="/list?catalog="+item.head.catalog) #{item.head.catalog}
-    +pagination(pagination)
+    each item,index in list
+      .article-box
+        .id.flex-center #{index}
+        .box
+          .article-title
+            a(href="/article/"+item._id) #{item.title}
+          .box-tag
+            if item.head.catalog
+              +icon('classifi-copy')
+              span.tag
+                a(href="/list?catalog="+item.head.catalog) #{item.head.catalog}
+            if item.head.tags
+              +icon('tag1')
+              each tag in item.head.tags
+                span.tag
+                  a(href="/list?tag="+tag) #{tag}
+    
+    //-.article-list-table
+      //-table.list-table
+        //-thead
+          //-tr.head-table
+            //-th.th-id #
+            //-th.th-title 标题
+            //-th.th-tags 标签
+            //-th.th-catalog 分类
+        //-tbody
+          //-each item,index in list
+            //-tr
+              //-td.td-id= index+1
+              //-td.td-title
+                //-a(href="/article/"+item._id) #{item.title}
+              //-td.td-tags
+                //-if item.head.tags
+              //-td.td-catalog 
+                //-if item.head.catalog
+                  //-span.tag
+                    //-a(href="/list?catalog="+item.head.catalog) #{item.head.catalog}
+    //-+pagination(pagination)
 

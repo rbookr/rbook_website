@@ -1,8 +1,9 @@
+$fontcolor: lighten($color: #222, $amount: 70%);
 .site-header {
-    height: 200px;
+    height: 250px;
     width: 100%;
     padding: 1.5rem 0;
-    color:#fff;
+    color: $fontcolor;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,9 +13,16 @@
         display: flex;
         align-items: center;
         h3 {
-            font-size: 3em;
-            color: lighten($color: #ccc, $amount: 50%);
+            margin: 0;
+            font-size: 4.2rem;
+            color: $fontcolor;
             text-shadow: 5px 5px 5px #333;
+
+        }
+        @media screen and (max-width: 600px) {
+            h3 {
+                font-size: 3.2rem;
+            }
         }
     }
 
@@ -26,24 +34,39 @@
             margin: 0;
             padding: 0;
             font-size: 1.2em;
+            color: lighten($color: #222, $amount: 70%);
             display: flex;
             li {
                 list-style: none;
                 margin:5px 10px;
+                i,span {
+                    font-size: 2.2rem;
+                }
+                &:hover {
+                    background: #fff;
+                    font-weight: bolder;
+                    a {
+                        color: rgba($color: #000000, $alpha: 0.6);
+                    }
+                }
                 a {
                     text-decoration: none;
+                    text-shadow: 5px 5px 5px #333;
                     padding: 5px;
                     border-radius: 3px;
-                    color: #fff;
+                    color: $fontcolor;
                     i {
                         margin: 0 5px;
                     }
                     text-shadow: 3px 2px 3px rgba($color: #000000, $alpha: 0.4);
                 }
-                a:hover {
-                    background: #fff;
-                    color: rgba($color: #000000, $alpha: 0.6);
-                    font-weight: bolder;
+                @media screen and (max-width: 600px) {
+                    a .iconfont {
+                        font-size: 1.5rem;
+                    }
+                    span.menu_name {
+                        display: none;
+                    }
                 }
             }
         }

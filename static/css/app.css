@@ -39,10 +39,10 @@ span.tag-split {
   font-family: 'Ubuntu Mono',monospace; }
 
 .site-header {
-  height: 200px;
+  height: 250px;
   width: 100%;
   padding: 1.5rem 0;
-  color: #fff;
+  color: #d5d5d5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,31 +53,45 @@ span.tag-split {
     display: flex;
     align-items: center; }
     .site-header .site-header-title h3 {
-      font-size: 3em;
-      color: white;
+      margin: 0;
+      font-size: 4.2rem;
+      color: #d5d5d5;
       text-shadow: 5px 5px 5px #333; }
+    @media screen and (max-width: 600px) {
+      .site-header .site-header-title h3 {
+        font-size: 3.2rem; } }
   .site-header .site-header-menu {
     flex-grow: 0; }
     .site-header .site-header-menu ul {
       margin: 0;
       padding: 0;
       font-size: 1.2em;
+      color: #d5d5d5;
       display: flex; }
       .site-header .site-header-menu ul li {
         list-style: none;
         margin: 5px 10px; }
+        .site-header .site-header-menu ul li i, .site-header .site-header-menu ul li span {
+          font-size: 2.2rem; }
+        .site-header .site-header-menu ul li:hover {
+          background: #fff;
+          font-weight: bolder; }
+          .site-header .site-header-menu ul li:hover a {
+            color: rgba(0, 0, 0, 0.6); }
         .site-header .site-header-menu ul li a {
           text-decoration: none;
+          text-shadow: 5px 5px 5px #333;
           padding: 5px;
           border-radius: 3px;
-          color: #fff;
+          color: #d5d5d5;
           text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.4); }
           .site-header .site-header-menu ul li a i {
             margin: 0 5px; }
-        .site-header .site-header-menu ul li a:hover {
-          background: #fff;
-          color: rgba(0, 0, 0, 0.6);
-          font-weight: bolder; }
+        @media screen and (max-width: 600px) {
+          .site-header .site-header-menu ul li a .iconfont {
+            font-size: 1.5rem; }
+          .site-header .site-header-menu ul li span.menu_name {
+            display: none; } }
 
 .header-background {
   background-color: #808080;
@@ -111,35 +125,39 @@ footer {
   footer a:hover {
     color: lightblue; }
 
-.article-list .article-list-table table.list-table {
-  width: 100%;
-  display: table;
-  border-collapse: collapse;
-  border-spacing: 2px;
-  border-color: grey; }
-  .article-list .article-list-table table.list-table td, .article-list .article-list-table table.list-table th {
-    padding: 15px 0px; }
-  .article-list .article-list-table table.list-table tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    .article-list .article-list-table table.list-table tr:hover {
-      background: #b3e5fc; }
-  .article-list .article-list-table table.list-table tr.head-table {
-    background: #d9d9d9;
-    font-weight: bolder; }
-  .article-list .article-list-table table.list-table .th-title {
+.article-list .flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.article-list .article-box {
+  display: flex;
+  height: auto;
+  border: 1px solid #ccc;
+  margin: 10px 10px;
+  border-radius: 3px; }
+  .article-list .article-box .id {
+    background: #377D6A;
+    color: #f2f2f2;
+    flex-grow: 0;
+    height: auto;
+    font-size: 3rem;
+    width: 50px; }
+  .article-list .article-box .box {
     flex-grow: 1;
-    font-weight: bold; }
-    .article-list .article-list-table table.list-table .th-title a:hover {
-      color: blue; }
-  .article-list .article-list-table table.list-table .td-title {
-    padding-left: 8px;
-    font-weight: 600; }
-  .article-list .article-list-table table.list-table .td-tags, .article-list .article-list-table table.list-table .td-catalog, .article-list .article-list-table table.list-table .td-id {
-    text-align: center; }
-  .article-list .article-list-table table.list-table .tags-content {
-    max-width: 300px;
     display: flex;
-    flex-wrap: wrap; }
+    flex-direction: column; }
+    .article-list .article-box .box .article-title {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      background: #ccc; }
+      .article-list .article-box .box .article-title a {
+        text-decoration: none; }
+      .article-list .article-box .box .article-title:hover {
+        background: #d9d9d9;
+        font-weight: bold; }
+    .article-list .article-box .box .box-tag {
+      padding: 0.5rem; }
 
 .markdown-body .toc-body {
   position: fixed;
