@@ -21,3 +21,10 @@ div.info
       each tag in info.head.tags
         span.tag
           a(href="/list?tag="+tag) #{tag}
+    if info.head.tags && info.head.source
+      span.tag-split
+    if info.head.source
+      +icon('wangzhan')
+      each oj in info.head.source
+        span.tag
+          a(target="_blank" href=oj.url) #{oj.oj}
