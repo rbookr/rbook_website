@@ -1,0 +1,5 @@
+.tag_clound {
+  display: flex;
+  flex-wrap: wrap; }
+  .tag_clound span.tag {
+    font-size: 1.5rem; }

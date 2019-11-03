@@ -43,6 +43,23 @@ class Data {
         })
     }
 
+    /** 得到所有的tag */
+    get_all_tags(){
+        return new Promise( (res,rej)=>{
+            this.db.find({}, {}, (err,docs)=>{
+                let set = new Set();
+                docs.map( (doc)=>{
+                    //@ts-ignore
+                    if(doc.head.tags){
+                        //@ts-ignore
+                        doc.head.tags.map( tag=>{ set.add(tag)})
+                    }
+                })
+                res(Array.from(set))
+            })
+        } )
+    }
+
     /** pagenation */
     pagenation(query:any,page:number,pageSize:number){
         return new Promise( ( res,rej)=>{
