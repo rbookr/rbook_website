@@ -60,7 +60,7 @@ $fontcolor: lighten($color: #222, $amount: 70%);
                     }
                     text-shadow: 3px 2px 3px rgba($color: #000000, $alpha: 0.4);
                 }
-                @media screen and (max-width: 600px) {
+                @media screen and (max-width: 1000px) {
                     a .iconfont {
                         font-size: 1.5rem;
                     }

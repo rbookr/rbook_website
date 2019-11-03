@@ -85,7 +85,7 @@ span.tag-split {
           text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.4); }
           .site-header .site-header-menu ul li a i {
             margin: 0 5px; }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 1000px) {
           .site-header .site-header-menu ul li a .iconfont {
             font-size: 1.5rem; }
           .site-header .site-header-menu ul li span.menu_name {
