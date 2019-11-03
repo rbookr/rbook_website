@@ -145,7 +145,7 @@ class Scan {
      * @description 扫描所有内容并存入nedb
      * */
     async scanAllRespository(){
-        let files = this.get_all_files_in_dir(this.parent.localRespository, [/^_/], [/\.md$/])
+        let files = this.get_all_files_in_dir(this.parent.localRespository, [/^_/,/_draft/], [/\.md$/])
         files.map( async ({path,rpath,full_path})=>{
             /** 存储 进 数据库 */
             let doc = this.gen_document(full_path)
