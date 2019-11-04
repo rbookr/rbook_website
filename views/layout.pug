@@ -14,8 +14,9 @@ html
     link(rel='stylesheet', href='/font/font.css')
   body
     include ./_partical/head.pug
-    div.container
-      block content
+    div.container-wrapper
+      div.container
+        block content
     include ./_partical/footer.pug
     script(src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js")
     script(src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js")
