@@ -57,7 +57,8 @@ span.tag-split {
       margin: 0;
       font-size: 4.2rem;
       color: #d5d5d5;
-      text-shadow: 5px 5px 5px #333; }
+      text-shadow: 5px 5px 5px #333;
+      text-align: center; }
     @media screen and (max-width: 600px) {
       .site-header .site-header-title h3 {
         font-size: 3.2rem; } }

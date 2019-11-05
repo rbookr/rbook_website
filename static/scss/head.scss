@@ -17,6 +17,7 @@ $fontcolor: lighten($color: #222, $amount: 70%);
             font-size: 4.2rem;
             color: $fontcolor;
             text-shadow: 5px 5px 5px #333;
+            text-align: center;
 
         }
         @media screen and (max-width: 600px) {
