@@ -1,4 +1,5 @@
 const qs= require("querystring")
+const fs = require("fs")
 exports.generator_pagenaion_info = function(base,list_query,current,totalPage){
   let size = 3
   let right_limit = Math.min(current+3,totalPage)
@@ -35,5 +36,28 @@ exports.generator_pagenaion_info = function(base,list_query,current,totalPage){
     pre:`${base}?${qs.stringify(Object.assign(query, {page:current-1}))}`,
     next:`${base}?${qs.stringify(Object.assign(query, {page:current+1}))}`,
     url
+  }
+}
+
+/* 扫描所有数据 */
+exports.scanBookGit = async function (){
+  await bookSystem.clear()      //清空数据库
+  /* 仓库下载 */
+  if( !fs.existsSync(config.localRespository)){
+    debug(`======== clone 仓库 =======`)
+    await bookSystem.Repository.clone()
+  }
+  await bookSystem.Repository.git_init()
+
+  //扫描
+  if(config.scanAllRespository ){
+    await bookSystem.Scan.scanAllRespository()
+    debug(`======== 扫描所有数据 结束=======`)
+  }
+  //扫描 目录
+  if( config.scanCatalogue){
+    let catalogs = bookSystem.Scan.scanCatalogues(config.catalogueEnterPoints)
+    global.catalogs = catalogs
+    debug(`======== 扫描所有目录 结束=======`)
   }
 }

@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+var {scanBookGit} = require("../utils/index")
 router.prefix('/update')
 
 router.post('/',async (ctx,next)=>{
@@ -9,6 +10,7 @@ router.post('/',async (ctx,next)=>{
         /* 更新git */
       try {
         await bookSystem.Repository.pull_master()
+        await scanBookGit();
         ctx.body = "更新成功 " + (new Date()).toString()
       }
       catch(e){

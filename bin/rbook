@@ -4,6 +4,7 @@ global.debug = require('debug')('debug');
 var http = require('http');
 var fs = require('fs')
 var jsyaml = require("js-yaml")
+var {scanBookGit} = require("../utils/index")
 
 
 /* 1.====== 加载配置 ====== */
@@ -33,29 +34,7 @@ global.bookSystem = new BookSystemClass(global.config)
 
 /* 3.====== 初始化的相关工作 ====== */
 async function initJobs(){
-  await bookSystem.clear()      //清空数据库
-  /* 仓库下载 */
-  if( !fs.existsSync(config.localRespository)){
-    debug(`======== clone 仓库 =======`)
-    await bookSystem.Repository.clone()
-  }
-  await bookSystem.Repository.git_init()
-
-  //扫描
-  if(config.scanAllRespository ){
-    await bookSystem.Scan.scanAllRespository()
-    debug(`======== 扫描所有数据 结束=======`)
-  }
-  //扫描 目录
-  if( config.scanCatalogue){
-    let catalogs = bookSystem.Scan.scanCatalogues(config.catalogueEnterPoints)
-    global.catalogs = catalogs
-    debug(`======== 扫描所有目录 结束=======`)
-  }
-  //debug(catalogs)
-  //扫描 目录
-  //仓库clone
-  //仓库更新
+  await scanBookGit();
 }
 
 initJobs()
