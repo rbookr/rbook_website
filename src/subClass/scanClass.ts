@@ -112,15 +112,16 @@ class Scan {
 
             if(stat.isFile()) //是文件
             {
+
+                let doc = this.gen_document(real_path)
                 parent.children.push(
                     Object.assign(item, 
                         {
                             name:emojiToolkit.shortnameToImage( title || name ||'unkown' ),
-                            url: Url.path_2_url(pathFn.relative(this.parent.localRespository, real_path))
+                            url: Url.id_2_url(doc._id)
                         }
                     )
                 )
-                let doc = this.gen_document(real_path)
                 //console.log(doc)
                 //@ts-ignore
                 await this.parent.Db.update(doc)
