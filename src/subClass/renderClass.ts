@@ -7,9 +7,9 @@ class RenderClass {
         this.parent = parent
     }
 
-    ejsRender(path:string){
+    ejsRender(path:string,data:{} = {}){
         return new Promise( (res,rej)=>{
-            ejs.renderFile(path, {},{},(err,str)=>{
+            ejs.renderFile(path, data,{},(err,str)=>{
                 if(err)
                     rej(err)
                 else
@@ -18,11 +18,11 @@ class RenderClass {
         })
     }
 
-    render(path:string){
+    render(path:string,data:{} = {}){
         let filePath = path
         if( ! pathFn.isAbsolute(filePath))
             filePath = pathFn.join(this.parent.localRespository,filePath)
-        return this.ejsRender(path).then( (str)=>{
+        return this.ejsRender(path,data).then( (str)=>{
             return this.imagePath_translate(
                 //@ts-ignore
                 md.render(this.parent.Scan.splitStr(str).content), 

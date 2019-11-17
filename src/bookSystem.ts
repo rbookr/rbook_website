@@ -50,8 +50,8 @@ class BookSystem implements bookSystem{
     }
 
     /** 渲染 */
-    render(filePath:string){
-        return this.Render.render(filePath)
+    render(filePath:string,data:{} = {}){
+        return this.Render.render(filePath,data)
     }
 }
 

@@ -21,7 +21,7 @@ router.get('/:id', async function (ctx, next) {
   let article = await Cache.get(`article-${Info._id}`)
   let viewcount = await Cache.count(`article-${Info._id}`)
   if( !article){
-    article = await global.bookSystem.render(Info.real_path)
+    article = await global.bookSystem.render(Info.real_path,ctx.state )
     Cache.set(`article-${Info._id}`,article,config.cache_time)
   }
   ctx.body = `article: ${ctx.params.id}`

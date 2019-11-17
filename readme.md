@@ -42,3 +42,18 @@ yarn global add pm2
 pm2 start tools/pm2.demo.yml
 ```
 
+
+### 特性
+
+在配置文件设置:
+
+```
+USER:
+    foo: bar
+```
+
+可以的md中使用**ejs**语法,例如 
+```
+%<= USER.foo %>
+```
+

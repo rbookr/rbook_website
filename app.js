@@ -56,7 +56,7 @@ app.use( async (ctx,next)=>{
 app.use(async (ctx,next)=>{
   ctx.state = {
     config:global.config,
-    USER: global.config.user || {}
+    USER: global.config.USER || {}
   }
   await next()
 })
