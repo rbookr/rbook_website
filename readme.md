@@ -57,3 +57,11 @@ USER:
 %<= USER.foo %>
 ```
 
+### 下载文件的功能
+
+支持的下载格式py,zip.txt
+
+```markdown
+[download 1](foo.txt)
+[download 2](./foo/bar.txt)
+```

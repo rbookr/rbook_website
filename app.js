@@ -53,6 +53,22 @@ app.use( async (ctx,next)=>{
         await next()
 })
 
+//download file
+app.use( async (ctx,next)=>{
+  let ext = pathFn.extname(ctx.path)
+  if( ['.py','.zip','.js','.txt'].indexOf(ext) !== -1){
+    //console.log(ctx.path)
+    let filepath = pathFn.join(config.localRespository,decodeURIComponent(ctx.path));
+    let isExists = fs.existsSync(filepath)
+    if( isExists){
+      ctx.body = fs.createReadStream(filepath);
+      ctx.set('Content-disposition', `attachment; filename= ${pathFn.basename(filepath)}`);
+      return
+    }
+  }
+  await next()
+})
+
 app.use(async (ctx,next)=>{
   ctx.state = {
     config:global.config,
