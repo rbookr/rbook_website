@@ -1,0 +1,33 @@
+include ./article.pug
+  script(src="/js/socket.io.js")
+  script.
+    function showTips( content, height, time ){  
+      var windowWidth  = $(window).width();  
+        var tipsDiv = '<div class="tipsClass">' + content + '</div>';   
+        $( 'body' ).append( tipsDiv );  
+        $( 'div.tipsClass' ).css({  
+            'top'       : height + 'px',  
+            //-'left'      : ( windowWidth / 2 ) - 350/2 + 'px',  
+            'right'      : '100px',  
+            'position'  : 'fixed',  
+            'padding'   : '3px 5px',  
+            'background': '#8FBC8F',  
+            'font-size' : 2.5 + 'em',  
+            'margin'    : '0 auto',  
+            'text-align': 'center',  
+            'width'     : '350px',  
+            'height'    : 'auto',  
+            'color'     : '#fff',  
+            'opacity'   : '0.8'  
+        }).show();  
+        setTimeout( function(){$( 'div.tipsClass' ).fadeOut();}, ( time * 1000 ) );  
+    }
+    const socket = io(window.location.origin);
+    socket.on('connect',()=>{
+      showTips('连接后台成功',100,3)
+    })
+    //替换页面
+    socket.on('replace',(html)=>{
+      $('div.markdown-body').html(html)
+    })
+

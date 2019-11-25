@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+global.debug = require('debug')('*');
+var http = require('http');
+var fs = require('fs')
+var jsyaml = require("js-yaml")
+const pathFn = require("path")
+const socket = require('socket.io')
+
+/* 1.====== 加载配置 ====== */
+let config_path = pathFn.join(__dirname,'single_config.yml')
+
+try{
+  global.config = jsyaml.safeLoad( fs.readFileSync(config_path,{encoding:'utf-8'}))
+}
+catch(e){
+  console.error(`配置文件加载错误,${config_path}`)
+  console.error(e)
+  process.exit(0)
+}
+
+config.remoteRespository = config.localRespository = "/home/rainboy/mycode"
+
+/* 2.====== 加载BookSystem ====== */
+var BookSystemClass = require("../lib/bookSystem/bookSystem").default
+global.bookSystem = new BookSystemClass(global.config)
+
+var mdFile_path = process.argv[2]
+if(!mdFile_path ){
+  console.error('usage : single mdfile ')
+  process.exit(0)
+}
+
+if( !pathFn.isAbsolute(mdFile_path)){
+  mdFile_path = pathFn.join( process.cwd(),mdFile_path)
+}
+
+global.markdown = {}
+global.markdown.Info = bookSystem.Scan.split(mdFile_path)
+bookSystem.Render.render(mdFile_path).then( (html)=>{
+  global.markdown.html = html
+ })
+
+/* 4.====== 创建http 服务器 ====== */
+var app = require('../app');
+var port = config.PORT || 3038
+var server = http.createServer(app.callback());
+
+const io = new socket(server)
+io.on('connection', function(socket){
+    console.log('a user connected')
+})
+
+server.listen(port)
+server.on('listening', onListening);
+
+/* 监听文件 */
+fs.watchFile(mdFile_path, {interval:500}, function(cur,pre){
+  console.log('变化')
+  bookSystem.Render.render(mdFile_path).then( (html)=>{
+    global.markdown.html = html
+    io.sockets.emit('replace',html)
+  })
+})
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}

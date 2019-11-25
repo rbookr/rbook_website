@@ -65,3 +65,13 @@ USER:
 [download 1](foo.txt)
 [download 2](./foo/bar.txt)
 ```
+
+## 单页面渲染
+
+有的时间我们只想渲染一个页面,进行查看效果,可以使用下面的命令
+
+```sh
+single <md_file_path>
+```
+
+然后打开浏览器查看效果

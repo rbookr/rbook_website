@@ -1,0 +1,45 @@
+single_route: true
+# Token 仓库更新token
+token: MYTOKEN
+# 网站名
+site_name: Single
+# 默认的网页头部图片
+default_cover: https://i.loli.net/2019/05/06/5ccfffeae9910.jpg
+
+# http的端口 默认3033
+PORT: 3038
+
+Author:
+  name: Rainboy # 名字
+  link: https://rainboy.gitee.io/resume/    # 个人主页
+
+# 基础标题
+baseTitle: Rbook
+# favicon
+
+# 默认的head 背景
+
+# === Book 的相关配置
+#remoteRespository: xxx
+#localRespository: "?"
+catalogueEnterPoints: SUMMARY.yml
+scanCatalogue: true
+scanAllRespository: true
+
+# === redis cache 配置
+redis:
+    addr: redis://localhost
+    opts: { db:1 }
+# 缓存时间
+cache_time: 1
+# === route table
+#index_alias: '/catalog'    # 首页 alias
+route_disable: []
+
+# 控制目录的那些项目显示
+# 主页 目录 列表 标签云 历史记录 关于
+menu_disable: ['列表','标签云']
+
+# ============ 用户定义 变量
+USER:
+    pcs_site: https://pcs.slimeoj.online/

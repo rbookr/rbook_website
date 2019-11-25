@@ -23,7 +23,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(favicon( global.config.favicon || __dirname + '/static/images/favicon.ico'));
+app.use(favicon( global.config.favicon || __dirname + '/static/images/book.ico'));
 
 app.use(require('koa-static')(__dirname + '/static'))
 app.use(require('koa-static')(__dirname + '/markdown-r/assets'))
@@ -85,10 +85,11 @@ app.use(async (ctx,next)=>{
 })
 
 // routes load
-var routers = fs.readdirSync(__dirname+"/routes")
+let routes_path = config.single_route ? __dirname+"/single_route" : __dirname+"/routes"
+var routers = fs.readdirSync(routes_path)
 for( let route_name of routers){
   let basename = pathFn.basename(route_name,'.js')
-  let route = require(__dirname+"/routes/"+route_name)
+  let route = require(routes_path+'/'+route_name)
   if (config.route_disable && config.route_disable.indexOf(basename) != -1)
     continue;
   app.use(route.routes(),route.allowedMethods());
