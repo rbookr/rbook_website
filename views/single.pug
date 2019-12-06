@@ -29,5 +29,6 @@ include ./article.pug
     //替换页面
     socket.on('replace',(html)=>{
       $('div.markdown-body').html(html)
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     })
 

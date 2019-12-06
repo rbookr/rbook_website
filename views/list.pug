@@ -21,26 +21,5 @@ block content
               each tag in item.head.tags
                 span.tag
                   a(href="/list?tag="+tag) #{tag}
-    
-    //-.article-list-table
-      //-table.list-table
-        //-thead
-          //-tr.head-table
-            //-th.th-id #
-            //-th.th-title 标题
-            //-th.th-tags 标签
-            //-th.th-catalog 分类
-        //-tbody
-          //-each item,index in list
-            //-tr
-              //-td.td-id= index+1
-              //-td.td-title
-                //-a(href="/article/"+item._id) #{item.title}
-              //-td.td-tags
-                //-if item.head.tags
-              //-td.td-catalog 
-                //-if item.head.catalog
-                  //-span.tag
-                    //-a(href="/list?catalog="+item.head.catalog) #{item.head.catalog}
-    //-+pagination(pagination)
+    +pagination(pagination)
 
