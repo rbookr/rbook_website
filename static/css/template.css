@@ -1,0 +1,29 @@
+html .site-header, html footer {
+  display: none; }
+
+html .container {
+  width: 190mm !important; }
+
+html .markdown-body pre, html .markdown-body code {
+  word-wrap: break-word;
+  white-space: pre-wrap; }
+
+.line-numbers-wrapper .line-number {
+  display: none; }
+
+.first-page {
+  height: 277mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+  .first-page .title {
+    margin: 10mm 0;
+    font-size: 15mm; }
+  .first-page .word {
+    font-weight: bold;
+    font-size: 5mm; }
+  .first-page img {
+    width: 50mm;
+    margin: 50px 0; }

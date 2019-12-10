@@ -40,6 +40,15 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
+//404
+app.use(async(ctx, next) => {
+  await next()
+  const status = ctx.status || 404
+  if (status === 404) {
+    await ctx.render('404')
+  }
+})
+
 // middlewares
 
 app.use( async (ctx,next)=>{
@@ -96,10 +105,18 @@ for( let route_name of routers){
   debug(`加载 route: ${basename}`)
 }
 
+/* 加载 extra_routes */
+if( global.config.extra_routes ){
+  debug("加载 extra_routes :")
+  var extra_route = require("./extra_routes/index")
+  app.use(extra_route.routes(),extra_route.allowedMethods())
+}
+
 
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
+
 
 module.exports = app

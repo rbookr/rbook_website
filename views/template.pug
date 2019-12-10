@@ -1,0 +1,39 @@
+extends layout
+
+block head
+  link(rel='stylesheet', href='/css/template.css')
+block content
+  div.first-page
+    h1.title Rbook 代码模板书
+    img(src="/cover/template.png", alt="")
+    p.word Small But Powerful 
+    p.author by #{config.Author.name} @ #{time}
+    
+  .markdown-body
+    | !{article}
+block script
+  script(src="https://cdn.bootcss.com/viz.js/2.1.2/viz.js")
+  script(src="https://cdn.bootcss.com/viz.js/2.1.2/full.render.js")
+  script(src="/js/vizRender.js")
+  script(src="https://cdn.jsdelivr.net/gh/rbookr/web-components@8d840df7e81ae052b2425129bf37e96e841b63b9/dist/viz-gallery/viz-gallery.min.js")
+  script(type="text/x-mathjax-config").
+    MathJax.Hub.Config({
+      TeX: { extensions: ["autoload-all.js"] },
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //-<!--$表示行内元素，$$表示块状元素 -->
+        inlineMath: [ ['$','$'], ["\\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX","TeX"] ,
+        showMathMenu:false
+      },
+      CommonHTML: { scale: 130 }
+    });
+  script(async="" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML")
+
+
+

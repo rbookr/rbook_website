@@ -75,3 +75,30 @@ single <md_file_path>
 ```
 
 然后打开浏览器查看效果
+
+## 模板生成的功能
+
+在`md`写入下面的内容时,会被截取进入**模板**
+
+```
+<!-- template start -->
+被截取的内容
+<!-- template end -->
+```
+
+开启方法,在`config.yml`配置文件中设置
+
+```
+# 额外加载的route
+extra_routes:
+    - 
+      name: codeTemplate # 代码模板生成
+      url: code_template
+      opts: {}  # 设置
+
+# 插件的加载
+plugins:
+    - 
+     name: generate_code_template
+     opts: {}
+```

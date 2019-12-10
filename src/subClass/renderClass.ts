@@ -18,7 +18,8 @@ class RenderClass {
         })
     }
 
-    render(path:string,data:{} = {}){
+
+    render(path:string,data:{} = {},template=false){
         let filePath = path
         if( ! pathFn.isAbsolute(filePath))
             filePath = pathFn.join(this.parent.localRespository,filePath)
@@ -26,9 +27,11 @@ class RenderClass {
         let at_repo_filePath = "/"+pathFn.relative(this.parent.localRespository,pathFn.dirname(filePath))
 
         return this.ejsRender(path,data).then( (str)=>{
+            //@ts-ignore
+          let content = template ?  this.parent.Scan.splitTemplate(str) : this.parent.Scan.splitStr(str).content ;
             return this.imagePath_translate(
                 //@ts-ignore
-                md.render(this.parent.Scan.splitStr(str).content), 
+                md.render(content), 
                 at_repo_filePath
             )
         }).then( (str)=>{

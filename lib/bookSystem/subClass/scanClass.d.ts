@@ -6,10 +6,12 @@ declare class Scan {
         head: any;
         content: string;
     };
+    /** 得到模板内容 */
+    splitTemplate(str: string, filePath: string): string;
     split(filePath: string): article_split_info;
     gen_document(filePath: string): document;
     /** 目录扫描 */
-    scanCatalogues(catalogPath: string): SUMMARY[] | undefined;
+    scanCatalogues(catalogPath: string): Promise<SUMMARY[] | undefined>;
     is_yaml_file(_path: string): boolean;
     /** 读取目录 */
     loadSummary(path: string, parent: SUMMARY): Promise<null | undefined>;

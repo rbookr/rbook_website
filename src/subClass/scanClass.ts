@@ -31,6 +31,19 @@ class Scan {
         return {head:{},content: str};
     }
 
+
+    /** 得到模板内容 */
+    splitTemplate(str:string,filePath:string){
+      let content = this.splitStr(str,filePath)
+      let ret:string[] = []
+      let reg = /<!-- template start -->\n((.|\n)+?)<!-- template end -->/g
+      str.replace(reg,function($0:string,$1:any){
+        ret.push($1)
+        return ''
+      })
+      return ret.join('\n')
+    }
+
     split(filePath:string):article_split_info{
         if( !pathFn.isAbsolute(filePath))
             filePath = pathFn.join(this.parent.localRespository,filePath)
@@ -61,12 +74,12 @@ class Scan {
     }
 
     /** 目录扫描 */
-    scanCatalogues(catalogPath:string){
+    async scanCatalogues(catalogPath:string){
         let catalog:SUMMARY = {name:''}
         let path = catalogPath
         if( !pathFn.isAbsolute(path))
             path = pathFn.join(this.parent.localRespository,path)
-        this.loadSummary(path, <SUMMARY>catalog)
+        await this.loadSummary(path, <SUMMARY>catalog)
         return catalog.children
     }
 
@@ -115,7 +128,7 @@ class Scan {
 
                 let doc = this.gen_document(real_path)
                 parent.children.push(
-                    Object.assign(item, 
+                    Object.assign({},item, 
                         {
                             name:emojiToolkit.shortnameToImage( title || name ||'unkown' ),
                             url: Url.id_2_url(doc._id)
@@ -128,13 +141,13 @@ class Scan {
 
             }
             else if( stat.isDirectory()){ //是目录
-                var new_data:SUMMARY = Object.assign(item, 
+                var new_data:SUMMARY = Object.assign({},item, 
                     {
                         name: emojiToolkit.shortnameToImage( title || name ||'unkown')
                     }
                 )
 
-                this.loadSummary(real_path,new_data)
+                await this.loadSummary(real_path,new_data)
 
                 if( new_data.children &&  new_data.children.length !== 0 )
                     parent.children.push(new_data)

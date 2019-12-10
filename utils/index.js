@@ -56,8 +56,32 @@ exports.scanBookGit = async function (){
   }
   //扫描 目录
   if( config.scanCatalogue){
-    let catalogs = bookSystem.Scan.scanCatalogues(config.catalogueEnterPoints)
+    let catalogs = await bookSystem.Scan.scanCatalogues(config.catalogueEnterPoints)
     global.catalogs = catalogs
     debug(`======== 扫描所有目录 结束=======`)
+  }
+
+  if( global.config.plugins){
+    await plugin(global.config.plugins)
+  }
+}
+
+/**
+ *@method plugin
+ *@param {Array} plugins 指明调用哪些plugin 和 给定相应的参数
+ *   plugins:[
+ *      {
+ *          name:'foo_plugin',
+ *          opts:{}
+ *      }
+ *   ]
+ *@return {返回值类型} 返回值说明
+ *@desc 根据参数运行 plugin目录下的插件
+ */
+const plugin = async function(plugins){
+  debug(`======== 加载 plugins: `)
+  for( let p of plugins){
+    debug(`  ==> ${p.name}`)
+    await require('./plugins/'+p.name)(p.opts)
   }
 }

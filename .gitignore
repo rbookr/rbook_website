@@ -91,3 +91,4 @@ config.yaml
 config.yml
 render.js
 tmp/
+.ccls-cache/
