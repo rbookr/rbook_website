@@ -1,0 +1,4 @@
+name: RbookServer
+script: bin/rbook
+args:
+    - path_to_config

@@ -104,7 +104,6 @@ for( let route_name of routers){
   app.use(route.routes(),route.allowedMethods());
   debug(`加载 route: ${basename}`)
 }
-
 /* 加载 extra_routes */
 if( global.config.extra_routes ){
   debug("加载 extra_routes :")

@@ -53,8 +53,8 @@ span.tag-split {
 
 
 .markdown-body {
-  a {
-    font-family: 'Ubuntu Mono',monospace;
+  a,pre {
+    font-family: 'Ubuntu Mono',monospace !important;
   }
 }
 
