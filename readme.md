@@ -102,3 +102,10 @@ plugins:
      name: generate_code_template
      opts: {}
 ```
+
+## 额外的markdown 语法
+
+路径转url
+```
+@@@foo/bar/my.md@@@ => /article/xxx_id
+```

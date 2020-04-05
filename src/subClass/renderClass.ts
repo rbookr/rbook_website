@@ -1,5 +1,6 @@
 import ejs from 'ejs'
 import pathFn from 'path'
+import fs from 'fs'
 const md = require("../../../markdown-r")
 class RenderClass {
     parent:bookSystem
@@ -29,6 +30,15 @@ class RenderClass {
         return this.ejsRender(path,data).then( (str)=>{
             //@ts-ignore
           let content = template ?  this.parent.Scan.splitTemplate(str) : this.parent.Scan.splitStr(str).content ;
+            //@ts-ignore
+            //content = article_id,在文章内得到 id,根据path得到id this.Url.path_2_url(at_repo_filePath.slice(1))
+            //@ts-ignore
+            content = content.replace(/@@@([^@^\n]+)@@@/g,($0,$1)=>{
+                let article_path = $1
+                if(!pathFn.isAbsolute($1)) article_path = pathFn.join(pathFn.dirname(filePath),article_path);
+                //@ts-ignore
+                return '/'+this.parent.Url.path_2_url(pathFn.relative(this.parent.localRespository,article_path))
+            })
             return this.imagePath_translate(
                 //@ts-ignore
                 md.render(content), 

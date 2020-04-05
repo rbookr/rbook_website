@@ -22,7 +22,7 @@ class url {
     path_2_id(resolve_path:string){
         //@ts-ignore
         let info = this.parent.Scan.split(resolve_path)
-        let _id = info._id || md5(resolve_path)
+        let _id = info.head._id || md5(resolve_path) //md5 ?
         return _id
     }
 
