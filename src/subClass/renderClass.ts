@@ -2,6 +2,7 @@ import ejs from 'ejs'
 import pathFn from 'path'
 import fs from 'fs'
 const md = require("../../../markdown-r")
+md.options.pangu = true
 class RenderClass {
     parent:bookSystem
     constructor(parent:bookSystem){
