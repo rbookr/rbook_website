@@ -29,9 +29,14 @@ block script
       CommonHTML: { scale: 100 }
     });
   script(async="" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML")
+  script(src="/markdown-r.js")
   script.
     pangu.spacingElementByTagName('p');
     document.addEventListener('DOMContentLoaded', () => {
       // listen to any DOM change and automatically perform spacing via MutationObserver()
       pangu.autoSpacingPage();
     });
+    let lbBoxs = document.getElementsByClassName("lb-box")
+    for(let i = 0 ; i < lbBoxs.length;i++){
+      lbBoxs[i].setAttribute("id",`lb-${i}`); new Lb({id:`lb-${i}`}) 
+      }
