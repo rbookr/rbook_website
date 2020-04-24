@@ -53,7 +53,7 @@ app.use(async(ctx, next) => {
 
 app.use( async (ctx,next)=>{
     let ext = pathFn.extname(ctx.path)
-    if( ['.png','.jpg','.gif'].indexOf(ext) !== -1){
+    if( ['.png','.jpg','.svg','.gif'].indexOf(ext) !== -1){
         //let real_path = pathFn.join(C.book_path,ctx.path)
         await send(ctx,ctx.path,{ root: config.localRespository })
         return
