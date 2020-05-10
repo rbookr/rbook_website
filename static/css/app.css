@@ -1,6 +1,7 @@
 body {
   padding: 0;
-  margin: 0; }
+  margin: 0; 
+  }
 
 .container-wrapper {
   padding: 0 10px; }
@@ -36,8 +37,9 @@ span.tag-split {
   span.tag-split::before {
     content: "|"; }
 
-.markdown-body a {
-  font-family: 'Ubuntu Mono',monospace; }
+.markdown-body a, .markdown-body pre, .markdown-body pre > code {
+  font-family: 'Ubuntu Mono',monospace !important; }
+
 
 .site-header {
   height: 250px;
