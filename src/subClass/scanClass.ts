@@ -62,11 +62,19 @@ class Scan {
         else
             real_path = pathFn.join(this.parent.localRespository,resolve_path)
 
+        let update_time = 0
+        try {
+          if( !fileInfo.head.update && !fileInfo.head.date) throw "";
+          update_time = moment( fileInfo.head.update || fileInfo.head.date).unix()
+        } catch( e){
+          console.error(`${filePath} has TIME FORMAT ERROR!`)
+        }
+
         let doc:document = {
             _id: fileInfo.head._id || md5(resolve_path),
             real_path,
             resolve_path,
-            update_time:fileInfo.head.update? moment(fileInfo.head.update).unix()  : 0,
+            update_time,
             title: fileInfo.head.title  ? fileInfo.head.title : pathFn.basename(resolve_path,'.md'),
             head:fileInfo.head
         }
