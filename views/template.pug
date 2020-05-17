@@ -15,6 +15,7 @@ block script
   script(src="https://cdn.bootcss.com/viz.js/2.1.2/viz.js")
   script(src="https://cdn.bootcss.com/viz.js/2.1.2/full.render.js")
   script(src="/js/vizRender.js")
+  script(src="https://cdn.bootcss.com/pangu/4.0.7/pangu.min.js")
   script(src="https://cdn.jsdelivr.net/gh/rbookr/web-components@8d840df7e81ae052b2425129bf37e96e841b63b9/dist/viz-gallery/viz-gallery.min.js")
   script(type="text/x-mathjax-config").
     MathJax.Hub.Config({
@@ -31,9 +32,17 @@ block script
         availableFonts: ["STIX","TeX"] ,
         showMathMenu:false
       },
-      CommonHTML: { scale: 130 }
+      CommonHTML: { scale: 100 }
     });
   script(async="" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML")
-
-
-
+  script(src="/markdown-r.js")
+  script.
+    pangu.spacingElementByTagName('p');
+    document.addEventListener('DOMContentLoaded', () => {
+      // listen to any DOM change and automatically perform spacing via MutationObserver()
+      pangu.autoSpacingPage();
+    });
+    let lbBoxs = document.getElementsByClassName("lb-box")
+    for(let i = 0 ; i < lbBoxs.length;i++){
+      lbBoxs[i].setAttribute("id",`lb-${i}`); new Lb({id:`lb-${i}`}) 
+      }
