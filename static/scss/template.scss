@@ -38,3 +38,51 @@ html {
     }
 
 }
+ul.catalog_list {
+  overflow:hidden;
+  font-size:1.2em;
+  .level-3 {
+    padding-left: 0.8em;
+  }
+  .level-4 {
+    padding-left: 1.6em;
+  }
+  .level-5 {
+    padding-left: 2.4em;
+  }
+  .level-6 {
+    padding-left: 3.2em;
+  }
+  li {
+    position: relative;
+    div {
+      display: inline-block;
+    }
+    list-style: none;
+    //a:link {color: #ccc} [> 未被访问的链接 蓝色 <]
+    a:link{
+      color:#000;
+      text-decoration: none; 
+    }
+    a:visited {color: #000} /* 已被访问过的链接 蓝色 */
+    a:hover {color: #ccc} /* 鼠标悬浮在上的链接 蓝色 */
+    a:active {color: #000} /* 鼠标点中激活链接 蓝色 */
+
+    .list-line{
+      border-top:1px dashed #d8d8d8;
+      position:absolute;
+      top:11px;
+      margin: 0 5px;
+      width: 100%;
+    }
+    .list-con{ position: absolute;
+      right: 0px;
+      padding: 0 5px;
+      z-index: 100;
+      text-align: right;
+      background: #fff;
+      padding-right: 10px;
+    }
+  }
+
+}

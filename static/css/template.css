@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html .site-header, html footer {
   display: none; }
 
@@ -27,3 +28,46 @@ html .markdown-body pre, html .markdown-body code {
   .first-page img {
     width: 50mm;
     margin: 50px 0; }
+
+ul.catalog_list {
+  overflow: hidden;
+  font-size: 1.2em; }
+  ul.catalog_list .level-3 {
+    padding-left: 0.8em; }
+  ul.catalog_list .level-4 {
+    padding-left: 1.6em; }
+  ul.catalog_list .level-5 {
+    padding-left: 2.4em; }
+  ul.catalog_list .level-6 {
+    padding-left: 3.2em; }
+  ul.catalog_list li {
+    position: relative;
+    list-style: none;
+    /* 已被访问过的链接 蓝色 */
+    /* 鼠标悬浮在上的链接 蓝色 */
+    /* 鼠标点中激活链接 蓝色 */ }
+    ul.catalog_list li div {
+      display: inline-block; }
+    ul.catalog_list li a:link {
+      color: #000;
+      text-decoration: none; }
+    ul.catalog_list li a:visited {
+      color: #000; }
+    ul.catalog_list li a:hover {
+      color: #ccc; }
+    ul.catalog_list li a:active {
+      color: #000; }
+    ul.catalog_list li .list-line {
+      border-top: 1px dashed #d8d8d8;
+      position: absolute;
+      top: 11px;
+      margin: 0 5px;
+      width: 100%; }
+    ul.catalog_list li .list-con {
+      position: absolute;
+      right: 0px;
+      padding: 0 5px;
+      z-index: 100;
+      text-align: right;
+      background: #fff;
+      padding-right: 10px; }

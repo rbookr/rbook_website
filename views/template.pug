@@ -46,3 +46,82 @@ block script
     for(let i = 0 ; i < lbBoxs.length;i++){
       lbBoxs[i].setAttribute("id",`lb-${i}`); new Lb({id:`lb-${i}`}) 
       }
+  script.
+    function unitConversion() {
+    /**
+      * 获取DPI
+     * @returns {Array}
+     */
+    this.conversion_getDPI =function () {
+      var arrDPI = new Array;
+        if (window.screen.deviceXDPI) {
+          arrDPI[0] = window.screen.deviceXDPI;
+            arrDPI[1] = window.screen.deviceYDPI;
+        } else {
+          var tmpNode = document.createElement("DIV");
+            tmpNode.style.cssText = "width:1in;height:1in;position:absolute;left:0px;top:0px;z-index:99;visibility:hidden";
+            document.body.appendChild(tmpNode);
+            arrDPI[0] = parseInt(tmpNode.offsetWidth);
+            arrDPI[1] = parseInt(tmpNode.offsetHeight);
+            tmpNode.parentNode.removeChild(tmpNode);
+        }
+        return arrDPI;
+    };
+    /**
+      * px转换为mm
+     * @param value
+     * @returns {number}
+     */
+    this.pxConversionMm = function (value) {
+      var inch = value/this.conversion_getDPI()[0];
+        var c_value = inch * 25.4;
+      return c_value;
+    };
+    /**
+      * mm转换为px
+     * @param value
+     * @returns {number}
+     */
+    this.mmConversionPx = function (value) {
+      var inch = value/25.4;
+        var c_value = inch*this.conversion_getDPI()[0];
+      return c_value;
+      }
+    }
+    //调用直接 new unitConversion().pxConversionMm(像素) 
+    //new unitConversion().mmConversionPx (毫米)      
+
+    // 获取元素的绝对位置坐标（像对于页面左上角）
+    function getElementPagePositionById(id){
+      //计算x坐标
+      var element = document.getElementById(id)
+      var actualLeft = element.offsetLeft;
+      var current = element.offsetParent;
+      while (current !== null){
+        actualLeft += current.offsetLeft;
+        current = current.offsetParent;
+      }
+      //计算y坐标
+      var actualTop = element.offsetTop;
+      var current = element.offsetParent;
+      while (current !== null){
+        actualTop += (current.offsetTop+current.clientTop);
+        current = current.offsetParent;
+      }
+      //返回结果
+      return {x: actualLeft, y: actualTop}
+    }
+    
+    (()=>{
+      var u = new unitConversion()
+      var a_list = document.getElementsByClassName("catalog_list")[0].getElementsByTagName("a")
+      for( let a of a_list){
+        let uid = a.getAttribute("href").slice(1)
+        //-let p = document.getElementById(uid)
+        console.log(uid)
+        let y = u.pxConversionMm(getElementPagePositionById(uid).y)
+        console.log(y)
+        let page = y / 267
+        a.getElementsByClassName("list-con")[0].innerText="" + Math.floor(page)
+      }
+    })()
