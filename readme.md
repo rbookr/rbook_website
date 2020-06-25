@@ -83,7 +83,7 @@ single <md_file_path>
 extra_menu:
     # 哪个元素在前面
     - [5,'cogs','/code_template','代码模板'] 
-    # 使用在图标
+    # 使用在图标,font awesome 4.7 在icon名
     # 路径
     # 导航名
 ```
