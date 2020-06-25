@@ -9,9 +9,6 @@ html .markdown-body pre, html .markdown-body code {
   word-wrap: break-word;
   white-space: pre-wrap; }
 
-.line-numbers-wrapper .line-number {
-  display: none; }
-
 .first-page {
   height: 277mm;
   display: flex;

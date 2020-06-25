@@ -14,8 +14,9 @@ html {
 }
 .line-numbers-wrapper {
     .line-number {
-        display: none;
+        //display: none;
     }
+    //border-right: none !important;
 }
 .first-page {
     height: 277mm;
