@@ -1,12 +1,15 @@
 - 
   var menu = [
-      ['xuanzhongshangcheng','/','主页'],
-      ['list1','/catalog','目录'],
+      ['home','/','主页'],
+      ['bars','/catalog','目录'],
       ['list','/list','列表'],
       ['tag','/tag','标签云'],
-      ['historyrecord','/history','历史记录'],
-      ['about','/about','关于'],
+      ['history','/history','历史记录'],
+      ['info-circle','/about','关于'],
   ]
+  if(config.extra_menu)
+    for(let _ of config.extra_menu )
+      menu.splice(_[0],0,_.slice(1))
 - 
   function get_cover(){
     if( cover )
@@ -26,5 +29,5 @@ div.site-header.header-background( style="background-image: url("+ get_cover()+"
         if config.menu_disable.indexOf(item[2]) == -1
           li
             a(href=item[1])
-              i.iconfont(class="icon-"+item[0])
+              i.fa(class="fa-"+item[0])
               span.menu_name #{item[2]}
