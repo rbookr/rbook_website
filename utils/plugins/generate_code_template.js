@@ -64,6 +64,7 @@ module.exports = async (opts)=>{
       ret_string = []
       for(let i = 0 ;i< pre.length || i < now.length ;i++){
         if( now[i] != pre[i] || !flag){
+          if( !now[i]) break;
           flag = false;
           let uid = uuid()
           let level =i+1
