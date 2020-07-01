@@ -24,12 +24,18 @@ router.get('/:id', async function (ctx, next) {
     article = await global.bookSystem.render(Info.real_path,ctx.state )
     Cache.set(`article-${Info._id}`,article,config.cache_time)
   }
-  ctx.body = `article: ${ctx.params.id}`
+  let code_map = null
+  if(global.config.show_article_code_map){
+    //console.log("code_map ===")
+    code_map = await codemap.get_One_relate_article_map(Info._id)
+  }
+  //ctx.body = `article: ${ctx.params.id}`
   await ctx.render('article',{
     title: Info.head.title || Info.title,
     article,
     info:Info,
-    viewcount
+    viewcount,
+    code_map
   })
 })
 

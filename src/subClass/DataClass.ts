@@ -32,6 +32,16 @@ class Data {
             })
         })
     }
+    find(query:any){
+        return new Promise( ( res,rej)=>{
+            this.db.find(query, (err:any,docs:any)=>{
+                if(err)
+                    rej(err)
+                else
+                    res(docs)
+            })
+        })
+    }
     count(query:any){
         return new Promise( ( res,rej)=>{
             this.db.count(query, function(err,count){

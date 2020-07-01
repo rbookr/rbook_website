@@ -2,29 +2,29 @@ include ./icon.pug
 div.info
   div.main
     span.author
-      +icon('author2')
+      +icon('user-circle-o')
       | #{info.head.author || config.Author.name ||"未知"}
     span.time
-      +icon('time')
+      +icon('clock-o')
       | #{info.head.update || '未知'}
     if info.head.catalog
       span.catalog
-        +icon('classifi-copy')
+        +icon('list-alt')
         span.tag
           a(href="/list?catalog="+info.head.catalog) #{info.head.catalog}
     span.count 
-      +icon('_huabanfuben')
+      +icon('eye')
       | #{ viewcount || 0}
   div.tags
     if info.head.tags
-      +icon('tag1')
+      +icon('tag')
       each tag in info.head.tags
         span.tag
           a(href="/list?tag="+tag) #{tag}
     if info.head.tags && info.head.source
       span.tag-split
     if info.head.source
-      +icon('wangzhan')
+      +icon('external-link-square')
       each oj in info.head.source
         span.tag
           a(target="_blank" href=oj.url) #{oj.oj}
