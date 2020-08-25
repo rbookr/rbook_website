@@ -26,6 +26,10 @@ html .markdown-body pre, html .markdown-body code {
     width: 50mm;
     margin: 50px 0; }
 
+h1.catalog-title {
+  text-align: center;
+  border: none; }
+
 ul.catalog_list {
   overflow: hidden;
   font-size: 1.2em; }

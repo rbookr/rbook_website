@@ -1,7 +1,6 @@
 body {
   padding: 0;
-  margin: 0; 
-  }
+  margin: 0; }
 
 .container-wrapper {
   padding: 0 10px; }
@@ -39,7 +38,6 @@ span.tag-split {
 
 .markdown-body a, .markdown-body pre, .markdown-body pre > code {
   font-family: 'Ubuntu Mono',monospace !important; }
-
 
 .site-header {
   height: 250px;

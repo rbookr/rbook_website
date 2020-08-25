@@ -50,14 +50,33 @@ module.exports = async (opts)=>{
     /* 递归目录 */
 
     let template = []
-    let list =  dfs_get_md_in_catalogs( global.catalogs[1],bookSystem.localRespository) 
-  //console.log("--------------------------------")
-  //console.log(list)
-  //console.log("--------------------------------")
+
+  /* 根据目录生成的数据是平坦的数组
+   * [
+   * {
+   *    path: '/home/rainboy/mycode/bookData/算法篇/动态规划/线型DP/lis/LIS最长不下降子序列.md',
+   *    id: 'd6aeb821d1070e384efd5681b490a2c6',
+   *    pre: [ '算法篇', '动态规划', '线型DP', 'LIS最长不下降子序列' ]
+   * },
+   * ...
+   * ]
+   * */
+
+  let catalog_page_str=""
+
+  for(let id of opts.ids){
+    let list =  dfs_get_md_in_catalogs( global.catalogs[id],bookSystem.localRespository) 
+
+    let catalog_page = []
     let PRE = [] //前一个文章在目录
     let PRE_CNT=[0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let catalog_page = []
-    if( list[0] ) PRE.push(list[0].pre[0])
+
+    //console.log("--------------------------------")
+    //console.log(opts)
+    //console.log(global.catalogs[id])
+    //console.log("--------------------------------")
+    if( list[0] ) PRE.push(list[0].pre[0]) //加入名字 例如: 算法篇
+    catalog_page_str += `<h1 class="catalog-title">${global.catalogs[id].name ||global.catalogs[id].title }</h1>`
 
     function get_head(pre,now){
       flag = true;
@@ -70,7 +89,7 @@ module.exports = async (opts)=>{
           let level =i+1
           PRE_CNT[level]++;
           PRE_CNT.fill(0,level+1)
-          let name = PRE_CNT.slice(2,level+1).join('.') + " " +now[i]
+          let name = PRE_CNT.slice(2,level+1).join('.') + " " +now[i] //生成在目录中的名字
           ret_string.push(`<h${level} id="${uid}">${name}</h${level}>`)
           catalog_page.push({level,name,uid})
         }
@@ -93,13 +112,18 @@ module.exports = async (opts)=>{
         PRE = title
       }
     }
-  let catalog_page_str = catalog_page.map( o => `<li class="level-${o.level}">
+
+    let ___catalog_page_str = catalog_page.map( o => `<li class="level-${o.level}">
   <a href="#${o.uid}">
   <div class="list-nap">${o.name}</div>
   <div class="list-line"></div>
   <div class="list-con">0</div>
 </a></li>`)
-  template.unshift(`<ul class="catalog_list"> ${catalog_page_str.join('\n')} </ul>`)
+    catalog_page_str += `<ul class="catalog_list"> ${___catalog_page_str.join('\n')} </ul>`
+
+  }
+
+  template.unshift(catalog_page_str)
 
   fs.writeFile(pathFn.join(bookSystem.localRespository,'code_template.html'),template.join('\n'), {encoding:'utf-8'},function(){
     debug('==模板生成完毕==')

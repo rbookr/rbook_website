@@ -106,7 +106,7 @@ extra_routes:
     - 
       name: codeTemplate # 代码模板生成
       url: code_template
-      opts: {}  # 设置
+      opts: {ids:[1,2]}  # 哪些目录下的md要生成 code_template
 
 # 插件的加载
 plugins:
