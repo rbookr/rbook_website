@@ -11,8 +11,24 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const redis_class = require("./lib/redis")
 const {Console} = require('console')
+const cors = require('koa2-cors');
 
 global.Cache = new redis_class(config.redis)
+
+
+// 
+app.use(cors({
+    origin: function (ctx) {
+      if(ctx.url.startsWith('/utils'))
+        return "*"; // 允许来自所有域名请求
+      return null
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 
 
 // error handler
