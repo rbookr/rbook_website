@@ -10,6 +10,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const redis_class = require("./lib/redis")
+const {Console} = require('console')
 
 global.Cache = new redis_class(config.redis)
 
@@ -110,6 +111,11 @@ if( global.config.extra_routes ){
   var extra_route = require("./extra_routes/index")
   app.use(extra_route.routes(),extra_route.allowedMethods())
 }
+
+app.use(function(ctx,next){
+  ctx.status = 404
+  ctx.body = 404
+})
 
 
 // error-handling

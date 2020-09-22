@@ -8,6 +8,11 @@ router.prefix('/article')
 
 router.get('/:id', async function (ctx, next) {
   let Info = await global.bookSystem.find(ctx.params.id)
+  if( !Info){
+    await next()
+    return
+  }
+
 
   /* 有密码 */
   if(Info.head && Info.head.password && Info.head.password !== ''){
