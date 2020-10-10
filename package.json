@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "DEBUG=debug ./node_modules/.bin/nodemon bin/rbook config.yml",
     "dev_blog": "DEBUG=debug ./node_modules/.bin/nodemon bin/rbook /home/rainboy/mycode/blogData/bin/blog.config.yml",
+    "build-scss":"node-sass ./static/scss/app.scss -o ./static/css",
     "build-bookSystem": "tsc --build"
   },
   "dependencies": {
