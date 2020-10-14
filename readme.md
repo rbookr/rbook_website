@@ -115,6 +115,12 @@ plugins:
      opts: {}
 ```
 
+## 其它extra_routes
+
+| 名字               | 功能             |
+|--------------------|------------------|
+| list_match_by_tags | 根据tags返回列表 |
+
 ## 额外的markdown 语法
 
 路径转url
