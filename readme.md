@@ -144,6 +144,9 @@ next_artilce:
 ```
 根据这些信息，用D3生成文章之间关系的力导图。主要用于题解之间的关系。例子TODO
 
+## web components
+
+理多的web components参考 [这里](https://github.com/rbookr/web-components)
 
 
 ## API
