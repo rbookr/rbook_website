@@ -82,7 +82,7 @@ app.use( async (ctx,next)=>{
 //download file
 app.use( async (ctx,next)=>{
   let ext = pathFn.extname(ctx.path)
-  if( ['.py','.zip','.js','.txt'].indexOf(ext) !== -1){
+  if( ['.cpp','.py','.zip','.js','.txt'].indexOf(ext) !== -1){
     //console.log(ctx.path)
     let filepath = pathFn.join(config.localRespository,decodeURIComponent(ctx.path));
     let isExists = fs.existsSync(filepath)
