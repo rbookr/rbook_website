@@ -5,5 +5,7 @@ interface document {
     resolve_path:string
     update_time:number
     title:string
-    head:{}
+    head:{
+        titleEmojiTag?:string
+    }
 }

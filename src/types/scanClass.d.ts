@@ -15,6 +15,7 @@ interface article_split_info {
         author?:string  //作者
         password?:string // 密码
         tag?: string[]   // tag
+        titleEmojiTag?:string
         [key:string]:any
     }
     content:string

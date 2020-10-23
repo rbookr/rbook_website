@@ -21,9 +21,14 @@ div.info
       each tag in info.head.tags
         span.tag
           a(href="/list?tag="+tag) #{tag}
-    if info.head.tags && info.head.source
+    //-if info.head.tags && info.head.source
+      //-span.tag-split
+    if info.head.video
       span.tag-split
+      span.tag
+          a(target="_blank" href=info.head.video) 📺视频教程
     if info.head.source
+      span.tag-split
       +icon('external-link-square')
       each oj in info.head.source
         span.tag

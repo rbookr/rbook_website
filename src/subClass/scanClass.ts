@@ -138,7 +138,7 @@ class Scan {
                 parent.children.push(
                     Object.assign({},item, 
                         {
-                            name:emojiToolkit.shortnameToImage( title || name ||'unkown' ),
+                            name:emojiToolkit.shortnameToImage((doc.head.titleEmojiTag || '' ) + (title || name ||'unkown') ),
                             url: Url.id_2_url(doc._id)
                         }
                     )
