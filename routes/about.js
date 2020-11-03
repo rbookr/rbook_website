@@ -20,7 +20,7 @@ router.get('/about',async (ctx ,next)=>{
       await ctx.render('article',{
         title:'关于',
         article,
-        info:{ head },
+        info:{ _id:"about",head },
         viewcount
       })
       return

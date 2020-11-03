@@ -86,7 +86,7 @@ async function main(){
       console.log(info.head.title ,info.resolve_path ,"存在")
     else {
       console.log(info.head.title ,info.resolve_path ,"  不存在")
-      await create_issue({labels,title:info.head.title},c)
+      await create_issue({labels,title:info.head.title,body:`${config.site_href}article/${info._id}`,},c)
       console.log("[==============>] 创建issue成功：",info.resolve_path)
       //process.exit(0)
     }
