@@ -1,6 +1,5 @@
 //-文章列表
 extends layout
-
 block content
   include ./_partical/info.pug
   include ./_partical/code_map.pug
@@ -33,6 +32,8 @@ block script
     });
   script(async="" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML")
   script(src="/markdown-r.js")
+
+  <link rel="stylesheet" href="">
   script.
     pangu.spacingElementByTagName('p');
     document.addEventListener('DOMContentLoaded', () => {
@@ -43,3 +44,5 @@ block script
     for(let i = 0 ; i < lbBoxs.length;i++){
       lbBoxs[i].setAttribute("id",`lb-${i}`); new Lb({id:`lb-${i}`}) 
       }
+  if config.Gitalk
+    include ./_partical/Gitalk.pug

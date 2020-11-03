@@ -115,6 +115,30 @@ plugins:
      opts: {}
 ```
 
+## 评论 gitalk 功能
+
+1. 先查看[gitalk](https://github.com/gitalk/gitalk)的使用
+
+要想使用这个功能，需要在config.yaml里加入
+
+```yaml
+Gitalk:
+    clientID: <addit>
+    clientSecret: <addit>
+    repo: <addit>
+    owner: <addit>
+    admin: ['<addit>']
+    distractionFreeMode: true
+```
+
+2. [自动初始化 Gitalk 和 Gitment 评论](https://www.infoq.cn/article/mAJ75QPWpdCYzptpP6e3)
+
+如果想要自动创建`issues`,使用bin下的`bin/autoIssues.js`
+
+```bash
+node autoIssues.js <path to config.yaml> <token>
+```
+
 ## 其它extra_routes
 
 | 名字               | 功能             |
