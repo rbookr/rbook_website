@@ -55,9 +55,11 @@
     }
 
     .toc-content {
+        max-width: 600px;
         padding: 1em;
         width: 100%;
         overflow-x: auto;
+        overflow-y: auto;
     }
 
     ul {

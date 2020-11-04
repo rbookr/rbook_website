@@ -203,9 +203,11 @@ footer {
     .markdown-body .toc-body .toc-title:hover:after {
       background: white; }
   .markdown-body .toc-body .toc-content {
+    max-width: 600px;
     padding: 1em;
     width: 100%;
-    overflow-x: auto; }
+    overflow-x: auto;
+    overflow-y: auto; }
   .markdown-body .toc-body ul {
     margin-left: 0; }
 
