@@ -37,7 +37,8 @@ span.tag-split {
     content: "|"; }
 
 .markdown-body a, .markdown-body pre, .markdown-body pre > code {
-  font-family: 'Fira Code' !important; }
+  font-family: 'Fira Code' !important;
+  font-variant-ligatures: none !important; }
 
 .site-header {
   height: 250px;

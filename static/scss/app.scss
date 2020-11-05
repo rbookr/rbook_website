@@ -55,6 +55,7 @@ span.tag-split {
 .markdown-body {
   a,pre,pre>code {
     font-family:'Fira Code' !important;
+    font-variant-ligatures: none !important;
   }
 }
 
