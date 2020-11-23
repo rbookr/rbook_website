@@ -40,6 +40,9 @@ span.tag-split {
   font-family: 'Fira Code' !important;
   font-variant-ligatures: none !important; }
 
+.markdown-body .viz-contain {
+  margin: 4.2em 0; }
+
 .site-header {
   height: 250px;
   width: 100%;
