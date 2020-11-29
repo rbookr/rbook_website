@@ -846,9 +846,9 @@ var componentNormalizer = __webpack_require__("2877");
 
 
 
-window.customElements.define('wc-loading', vue_wc_wrapper(external_Vue_default.a, () => __webpack_require__.e(/* import() */ 2).then(__webpack_require__.bind(null, "5ebd"))))
+window.customElements.define('wc-loading', vue_wc_wrapper(external_Vue_default.a, () => __webpack_require__.e(/* import() */ 3).then(__webpack_require__.bind(null, "5ebd"))))
 
-window.customElements.define('wc-pcs-list-by-tags', vue_wc_wrapper(external_Vue_default.a, () => __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, "292a"))))
+window.customElements.define('wc-pcs-list-by-tags', vue_wc_wrapper(external_Vue_default.a, () => Promise.all(/* import() */[__webpack_require__.e(1), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, "292a"))))
 
 /***/ }),
 
