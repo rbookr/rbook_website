@@ -1,5 +1,7 @@
 const qs= require("querystring")
 const fs = require("fs")
+const ejs = require('ejs')
+
 exports.generator_pagenaion_info = function(base,list_query,current,totalPage){
   let size = 3
   let right_limit = Math.min(current+3,totalPage)
@@ -83,5 +85,18 @@ const plugin = async function(plugins){
   for( let p of plugins){
     debug(`  ==> ${p.name}`)
     await require('./plugins/'+p.name)(p.opts)
+  }
+}
+
+
+//对文章head里的source.url 进行ejs渲染
+exports.ejsRenderHeadSourceUrl = function (head,renderObjs={}){
+  if(head && head.source && head.source instanceof Array) {
+      for( let i = 0;i< head.source.length;i++){
+          head.source[i] = {
+            ...head.source[i],
+            url: ejs.render(head.source[i].url,renderObjs)
+          }
+      }
   }
 }

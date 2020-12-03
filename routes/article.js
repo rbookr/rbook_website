@@ -4,7 +4,8 @@
  *
  * */
 const router = require('koa-router')()
-const ejs = require('ejs')
+//const ejs = require('ejs')
+const {ejsRenderHeadSourceUrl} = require("../utils")
 router.prefix('/article')
 
 router.get('/:id', async function (ctx, next) {
@@ -37,14 +38,7 @@ router.get('/:id', async function (ctx, next) {
   }
 
   //对Info 进行ejs渲染
-  if(Info.head && Info.head.source && Info.head.source instanceof Array) {
-      for( let i = 0;i< Info.head.source.length;i++){
-          Info.head.source[i] = {
-            ...Info.head.source[i],
-            url: ejs.render(Info.head.source[i].url,ctx.state)
-          }
-      }
-  }
+  ejsRenderHeadSourceUrl(Info.head,ctx.state)
 
   await ctx.render('article',{
     title: Info.head.title || Info.title,

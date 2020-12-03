@@ -36,6 +36,7 @@
  *        ]
  *  }
  * */
+const {ejsRenderHeadSourceUrl} = require("../utils")
 module.exports = async function list_mach_by_tags(ctx,next){
   let _ids = ctx.request.query.ids|| ""
   let list_query = {}
@@ -47,6 +48,8 @@ module.exports = async function list_mach_by_tags(ctx,next){
       {extra_id:{$in:ids}}
     ]})
   //let articles = await bookSystem.Db.find({_id:{$in:ids}})
+
+  articles.map( ({head}) =>  ejsRenderHeadSourceUrl(head,ctx.state) )
 
   ctx.body = {
     message:'ok',
