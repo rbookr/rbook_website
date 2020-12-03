@@ -19,12 +19,12 @@ __webpack_require__.r(__webpack_exports__);
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"41010616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/pcsListByTags.vue?vue&type=template&id=0e82eeb3&lang=pug&shadow
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"41010616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/pcsListByTags.vue?vue&type=template&id=506a2e9d&lang=pug&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"pcsListByTags"},[_c('loading',{attrs:{"show":_vm.loading}}),_c('button',{directives:[{name:"show",rawName:"v-show",value:(_vm.refresh),expression:"refresh"}],on:{"click":_vm.get_list}},[_vm._v("刷新")]),_c('table',[_vm._m(0),_c('tbody',_vm._l((_vm.list),function(item,idx){return _c('tr',[_c('td',[_vm._v(_vm._s(idx+1))]),_c('td',[_c('a',{attrs:{"href":(_vm.base + "article/" + (item._id)),"target":_vm.newTab=='true' ? '_blank' :'_self'}},[_vm._v(" "+_vm._s(item.title))])]),_c('td',_vm._l((item.head.source),function(source){return _c('a',{attrs:{"href":source.url,"target":"_blank"}},[_vm._v(_vm._s(source.oj))])}),0),_c('td',_vm._l((item.head.tags || []),function(tag){return _c('span',{style:({background:_vm.strToRGB(tag)})},[_vm._v(_vm._s(tag))])}),0),_c('td',[(item.head.video)?_c('a',{attrs:{"href":item.head.video}},[_vm._v("📺")]):_vm._e()]),_c('td',[_vm._v(_vm._s(item.head.comment || ""))])])}),0)])],1)}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',{staticStyle:{"width":"18px"}},[_vm._v("#")]),_c('th',[_vm._v("地址")]),_c('th',[_vm._v("题目")]),_c('th',[_vm._v("标签")]),_c('th',[_vm._v("视频")]),_c('th',[_vm._v("说明")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/pcsListByTags.vue?vue&type=template&id=0e82eeb3&lang=pug&shadow
+// CONCATENATED MODULE: ./src/components/pcsListByTags.vue?vue&type=template&id=506a2e9d&lang=pug&shadow
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
 var web_dom_collections_iterator = __webpack_require__("ddb0");
@@ -164,22 +164,20 @@ var component = Object(componentNormalizer["a" /* default */])(
   },
 
   mounted() {
-    console.log("==================================================sdfasdfasdf=");
     this.get_list();
   },
 
   methods: {
     get_list(match_urls) {
-      console.log("===================================================");
       this.loading = true; //list_match_by_tags?tags
 
-      let queryUrl = `${this.base}utils/list_match_by_${this.match}?${this.match}=${this.tags}`;
-      console.log(queryUrl); //filter
+      let queryUrl = `${this.base}utils/list_match_by_${this.match}?${this.match}=${this.tags}`; //filter
 
       let excludeId = this.excludeId.split(",");
       return fetch(queryUrl).then(res => res.json()).then(data => {
-        console.log(data);
-        console.log(excludeId);
+        /*console.log(data)*/
+
+        /*console.log(excludeId)*/
         this.list = data.articles.filter(({
           _id,
           extra_id = []
@@ -192,11 +190,6 @@ var component = Object(componentNormalizer["a" /* default */])(
 
           return true;
         });
-        console.log(this.list);
-        console.log(this.list);
-        console.log(this.list);
-        console.log(this.list);
-        console.log(this.list);
         this.loading = false;
         this.refresh = false;
       }).catch(e => {
