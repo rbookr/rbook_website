@@ -50,10 +50,19 @@ module.exports = async function list_mach_by_tags(ctx,next){
   //let articles = await bookSystem.Db.find({_id:{$in:ids}})
 
   articles.map( ({head}) =>  ejsRenderHeadSourceUrl(head,ctx.state) )
+  //console.log(articles)
+  let sorted_articles = Array(ids.length)
+  for( let art of articles){
+    let index = ids.indexOf(art._id)
+    sorted_articles[index] = art
+  }
+  sorted_articles.filter(d=>d)
+  //console.log("============ sorted ================================")
+  //console.log(sorted_articles)
 
   ctx.body = {
     message:'ok',
     //query,
-    articles
+    articles:sorted_articles
   }
 }
