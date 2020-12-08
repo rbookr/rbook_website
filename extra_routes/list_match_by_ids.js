@@ -45,7 +45,8 @@ module.exports = async function list_mach_by_tags(ctx,next){
   let articles = await bookSystem.Db.find({
     $or:[
       { _id:{$in:ids}},
-      {extra_id:{$in:ids}}
+      // 必需提供主_id
+      //{"head.extra_id":{ $or:[$in] } }
     ]})
   //let articles = await bookSystem.Db.find({_id:{$in:ids}})
 
@@ -56,13 +57,12 @@ module.exports = async function list_mach_by_tags(ctx,next){
     let index = ids.indexOf(art._id)
     sorted_articles[index] = art
   }
-  sorted_articles.filter(d=>d)
   //console.log("============ sorted ================================")
   //console.log(sorted_articles)
 
   ctx.body = {
     message:'ok',
     //query,
-    articles:sorted_articles
+    articles: sorted_articles.filter(d=>d)
   }
 }

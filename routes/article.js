@@ -9,11 +9,29 @@ const {ejsRenderHeadSourceUrl} = require("../utils")
 router.prefix('/article')
 
 router.get('/:id', async function (ctx, next) {
-  let Info = await global.bookSystem.find(ctx.params.id)
-  if( !Info){
+  //let Info = await global.bookSystem.find(ctx.params.id)
+  let Info = await global.bookSystem.Db.find({$or:[{_id:ctx.params.id},
+    {
+      "head.extra_id": {
+        $in:[ctx.params.id]
+      }
+    }
+  ]})
+  if( !Info || Info.length == 0){
     await next()
     return
   }
+  else if( Info.length > 1){
+    string = ''
+    for(let {_id,title} of Info){
+      string+= `<a href="/article/${_id}">${title}</a>\n`
+    }
+    ctx.body = string
+    return
+  }
+
+  console.log(Info)
+  Info = Info[0]
 
 
   /* 有密码 */

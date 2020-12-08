@@ -7,8 +7,17 @@ router.prefix('/utils')
 
 router.get('/exists/:id', async function (ctx, next) {
 
-  let Info = await global.bookSystem.find(ctx.params.id)
-  if( !Info){
+  //let Info = await global.bookSystem.find(ctx.params.id)
+
+  let Info = await global.bookSystem.Db.find({$or:[{_id:ctx.params.id},
+    {
+      "head.extra_id": {
+        $in:[ctx.params.id]
+      }
+    }
+  ]})
+
+  if( !Info || Info.length == 0){
     ctx.body = { exists:false }
   }
   else {
